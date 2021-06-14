@@ -50,8 +50,8 @@
 
 <h2>Opere:</h2>
 <ul>
-	<li th:each="opera : ${artista.opere}">
-		<div th:text="${opera.nome}" ></div>
+	<li th:each="opera : ${opere}">
+		<div th:text="${opera.titolo}" ></div>
 	</li>
 </ul>
 

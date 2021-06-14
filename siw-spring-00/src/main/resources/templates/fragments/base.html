@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="headerfiles(title)">
 	<meta charset="UTF-8" />
-	<link th:href="@{/css/base.css}" rel="stylesheet">
 	<title th:text="${title}"></title>
 </head>
 <body>
@@ -10,7 +9,7 @@
 		<div id="foot">
 			<a th:href="@{/}">Home</a>
 			<a th:href="@{/artisti}">Artisti</a>
-			<a th:href="collezione">Collezioni</a>
+			<a th:href="@{/collezioni}">Collezioni</a>
 		</div>
 	</footer>
 </body>

@@ -30,11 +30,15 @@
         <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
       </div>
       
-        <div>
-        <span>Curatore:</span>
-        <span><input type="text" th:name="nomeCuratore" /></span>
-        <span th:if="${#fields.hasErrors('curatore')}" th:errors="*{curatore}"></span>
-      </div>
+          <div>
+      <span>Curatore:</span>
+      <span>
+        <select th:field="${collezione.curatore}">
+          <option value="0">Seleziona curatore</option>
+          <option th:each="curatore : ${curatori}" th:value="${curatore.id}" th:text="|${curatore.nome} ${curatore.cognome}|"></option>
+        </select>
+      </span>
+    </div>
 
     </div>
 

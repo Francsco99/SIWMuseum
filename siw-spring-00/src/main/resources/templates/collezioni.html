@@ -3,22 +3,24 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Museo Villa Bonelli - Collezioni</title>
+	<title>Museo Villa Bonelli - Artisti</title>
 	<link th:href="@{/css/collezioni.css}" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
 </head>
 <body>
-	<header>Collezioni</header>
+	<header>
+		Artisti
+	</header>
 </body>
 
-<section id="flex-container-1">
+<section id="flex-container">
 	<ul id="lista">
 		<li class="elemento" th:each="collezione : ${collezioni}">
 			<div class="flex-item">
-				<a href="https://i.postimg.cc/906G0CkF/sogno-dali.jpg">
-					<img src="https://i.postimg.cc/906G0CkF/sogno-dali.jpg" 
+				<a th:href="@{'/collezione' + '/' + ${collezione.id}}">
+					<img src="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg" 
 					alt="${collezione.nome}"
 					height="300">
 				</a>
@@ -27,7 +29,7 @@
 			</div>
 		</li>
 	</ul>
-	
-	<footer th:replace="fragments/base.html :: fondo"></footer>
+</section>
 
-	</html>
+<footer th:replace="fragments/base.html :: fondo"></footer>
+</html>
