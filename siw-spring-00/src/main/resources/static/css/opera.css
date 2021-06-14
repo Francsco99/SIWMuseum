@@ -1,0 +1,35 @@
+body{
+  background-color: #f5dfa2;
+}
+header{
+	text-align: center;
+  font-size: 50px;
+  font-family: 'Girassol', cursive;
+}
+
+section.image{
+	text-align: center;
+	padding: 10px 0 0 0;
+}
+div img{ 
+width: 70%;
+  height: 70%;
+border: 15px groove brown;
+}
+
+section.description{
+  font-family: 'Open Sans', sans-serif;
+	padding: 10px;
+	
+}
+
+footer{
+	margin: 200px 0 0 0;
+  text-align: center;
+  background-color: #f5d57a;
+}
+
+#foot{
+  font-family: 'Open Sans', sans-serif;
+  word-spacing: 30px;
+}

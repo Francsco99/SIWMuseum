@@ -24,6 +24,24 @@
         <span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
       </div>
 
+       <div>
+        <span>Data di realizzazione:</span>
+        <span><input type="date" th:field="*{dataRealizzazione}" /></span>
+        <span th:if="${#fields.hasErrors('dataRealizzazione')}" th:errors="*{dataRealizzazione}"></span>
+      </div>
+
+      <div>
+        <span>Descrizione:</span>
+        <span><input type="text" th:field="*{descrizione}" /></span>
+        <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+      </div>
+
+       <div>
+        <span>Collezione:</span>
+        <span><input type="text" th:field="*{collezione}" /></span>
+        <span th:if="${#fields.hasErrors('collezione')}" th:errors="*{collezione}"></span>
+      </div>
+
     </div>
 
     <div>

@@ -2,9 +2,34 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Opere</title>
+	<meta name="viewport" content="width=device-width">
+	<title>Museo Villa Bonelli - Artisti</title>
+	<link th:href="@{/css/artisti.css}" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
 </head>
 <body>
-
+	<header>
+		Opere
+	</header>
 </body>
+
+<section id="flex-container">
+	<ul id="lista">
+		<li class="elemento" th:each="opera : ${opere}">
+			<div class="flex-item">
+				<a th:href="@{'/opera' + '/' + ${opera.id}}">
+					<img src="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg" 
+					alt="${opera.titolo}"
+					height="300">
+				</a>
+				<div class="desc" th:text="${opera.titolo}">
+				</div>
+			</div>
+		</li>
+	</ul>
+</section>
+
+<footer th:replace="fragments/base.html :: fondo"></footer>
 </html>

@@ -11,23 +11,23 @@
 </head>
 <body>
 	<header>Collezioni</header>
+</body>
 
-	<section id="flex-container-1">
-		<ul id="lista">
-			<li class="elemento" th:each="collezione : ${collezioni}">
-				<div class="flex-item">
-					<a href="https://i.postimg.cc/906G0CkF/sogno-dali.jpg">
-						<img src="https://i.postimg.cc/906G0CkF/sogno-dali.jpg" 
-						alt="${collezione.nome}"
-						height="300">
-					</a>
-					<div class="desc" th:text="${collezione.nome}">
-					</div>
+<section id="flex-container-1">
+	<ul id="lista">
+		<li class="elemento" th:each="collezione : ${collezioni}">
+			<div class="flex-item">
+				<a href="https://i.postimg.cc/906G0CkF/sogno-dali.jpg">
+					<img src="https://i.postimg.cc/906G0CkF/sogno-dali.jpg" 
+					alt="${collezione.nome}"
+					height="300">
+				</a>
+				<div class="desc" th:text="${collezione.nome}">
 				</div>
-			</li>
-		</ul>
-	</body>
-
+			</div>
+		</li>
+	</ul>
+	
 	<footer th:replace="fragments/base.html :: fondo"></footer>
 
 	</html>

@@ -22,6 +22,8 @@ public class OperaValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titolo","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dataRealizzazione","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descrizione","required");
 		if(!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
 			if(this.operaService.alreadyExists((Opera)target)){

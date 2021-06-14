@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header>
-		Autori
+		Artisti
 	</header>
 </body>
 
@@ -24,7 +24,7 @@
 					alt="${artista.nome}"
 					height="300">
 				</a>
-				<div class="desc" th:text="${artista.nome}">
+				<div class="desc" th:text="|${artista.nome} ${artista.cognome}|">
 				</div>
 			</div>
 		</li>
