@@ -25,6 +25,8 @@ public class ArtistaController {
 	private ArtistaValidator artistaValidator;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	//SANCRISPINO è MEGLIO
 
 	@RequestMapping(value="/addArtista", method = RequestMethod.GET)
 	public String addArtista(Model model) {
