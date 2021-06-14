@@ -38,8 +38,7 @@ public class Artista {
 	private List<Opera> opere;
 	
 	public Artista() {
-		this.opere = new ArrayList<>();
-		
+		this.opere = new ArrayList<>();	
 	}
 	
 	public Artista(String nome, String luogoNascita) {

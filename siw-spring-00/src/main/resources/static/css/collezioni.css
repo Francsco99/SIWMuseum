@@ -7,21 +7,12 @@ header{
   font-size: 50px;
 }
 
-#flex-container-1{
+#flex-container{
   font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-basis: auto;
 }
-#flex-container-2{
-  font-family: 'Open Sans', sans-serif;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-basis: auto;
-}
-
 
 .flex-item {
   margin: 10px;
@@ -30,11 +21,6 @@ header{
   border-radius: 5px;
   width: 500px;
   height: auto;
-  flex-basis: auto;
-}
-
-div.flex-item:hover {
-  border: 2px solid #777;
 }
 
 #lista {
@@ -44,9 +30,13 @@ div.flex-item:hover {
   list-style-type: none;
 }
 
+div.flex-item:hover {
+  border: 2px solid #777;
+}
 .elemento{
   list-style-type: none ;
 }
+
 footer{
   margin: 500px 0 0 0;
   text-align: center;

@@ -1,17 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="headerfiles(title)">
-	<meta charset="UTF-8" />
-	<link th:href="@{/css/base.css}" rel="stylesheet">
-	<title th:text="${title}"></title>
+
+<head th:fragment="testa">
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+	<title>Museo Villa Bonelli</title>
 </head>
+
 <body>
 	<footer th:fragment="fondo">
 		<div id="foot">
 			<a th:href="@{/}">Home</a>
 			<a th:href="@{/artisti}">Artisti</a>
-			<a th:href="collezione">Collezioni</a>
+			<a th:href="@{/collezioni}">Collezioni</a>
 		</div>
 	</footer>
 </body>
+
 </html>

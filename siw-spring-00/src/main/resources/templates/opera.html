@@ -1,22 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link th:href="@{/css/opera.css}" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-	<title>Museo Villa Bonelli - Opera</title>
-</head>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/opera.css}" rel="stylesheet">
+
+<head th:include="fragments/base.html :: testa"></head>
+
 <body th:if="${opera}" th:object="${opera}">
 	<header th:text="*{titolo}"></header>
 </body>
 
 <section class="image">
 	<div>
-		<a href="">
-			<img th:if="${opera}" th:object="${opera}" src="" alt="*{titolo}">
+		<a href="opera">
+			<img th:if="${opera}" th:object="${opera}" src="" alt="${opera.titolo}">
 		</a>
 	</div>
 </section>
@@ -27,6 +23,7 @@
 	</h2>
 	<div th:if="${opera}" th:object="${opera}" th:text=*{descrizione}></div>
 </section>
+
 <footer th:replace="fragments/base.html :: fondo"></footer>
 
 </html>

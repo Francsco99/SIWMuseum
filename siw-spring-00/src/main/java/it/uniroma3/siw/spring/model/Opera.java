@@ -22,9 +22,11 @@ public class Opera {
 	private String descrizione;
 	
 	@ManyToOne
+	@JoinColumn(name="collezione_id")
 	private Collezione collezione;
 
 	@ManyToOne
+	@JoinColumn(name="autore")
 	private Artista autore;
 	
 	public Opera() {

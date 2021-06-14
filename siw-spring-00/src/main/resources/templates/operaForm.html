@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Museo Villa Bonelli - Aggiungi un' opera</title>
-</head>
+
+<link th:href="@{/css/operaForm.css}" rel="stylesheet">
+
+<head th:include="fragments/base.html :: testa"></head>
 
 <body>
   <div>
@@ -17,31 +16,33 @@
     </div>
 
     <div>
-      
+
      <div>
-        <span>Titolo:</span>
-        <span><input type="text" th:field="*{titolo}" /></span>
-        <span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
-      </div>
+      <span>Titolo:</span>
+      <span><input type="text" th:field="*{titolo}" /></span>
+      <span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
+    </div>
 
-       <div>
-        <span>Data di realizzazione:</span>
-        <span><input type="date" th:field="*{dataRealizzazione}" /></span>
-        <span th:if="${#fields.hasErrors('dataRealizzazione')}" th:errors="*{dataRealizzazione}"></span>
-      </div>
+    <div>
+      <span>Data di realizzazione:</span>
+      <span><input type="date" th:field="*{dataRealizzazione}" /></span>
+      <span th:if="${#fields.hasErrors('dataRealizzazione')}" th:errors="*{dataRealizzazione}"></span>
+    </div>
 
-      <div>
-        <span>Descrizione:</span>
-        <span><input type="text" th:field="*{descrizione}" /></span>
-        <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-      </div>
+    <div>
+      <span>Descrizione:</span>
+      <span><input type="text" th:field="*{descrizione}" /></span>
+      <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+    </div>
 
-       <div>
-        <span>Artista:</span>
-        <span><input type="text" th:name="artista" /></span>
-        <span th:if="${#fields.hasErrors('collezione')}" th:errors="*{collezione}"></span>
-      </div>
-
+    <div>
+      <span>Artista:</span>
+      <span>
+        <select th:field="${opera.autore}">
+          <option value="0">Seleziona autore</option>
+          <option th:each="artista : ${artisti}" th:value="${artista.id}" th:text="|${artista.nome} ${artista.cognome}|"></option>
+        </select>
+      </span>
     </div>
 
     <div>
