@@ -6,7 +6,7 @@ import it.uniroma3.siw.spring.model.Artista;
 
 public interface ArtistaRepository extends CrudRepository<Artista,Long> {
 
-	public List<Artista> findByNome(String nome);
+	public Artista findByNome(String nome);
 	
 	public List<Artista> findByNomeOrCognome(String nome, String cognome);
 	

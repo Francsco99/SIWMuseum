@@ -10,8 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.fasterxml.jackson.databind.annotation.JsonAppend.Attr;
+
 import it.uniroma3.siw.spring.model.Collezione;
+import it.uniroma3.siw.spring.model.Curatore;
 import it.uniroma3.siw.spring.service.CollezioneService;
+import it.uniroma3.siw.spring.service.CuratoreService;
 import it.uniroma3.siw.spring.validator.CollezioneValidator;
 
 @Controller
@@ -22,6 +28,9 @@ public class CollezioneController {
 	
 	@Autowired
 	private CollezioneValidator collezioneValidator;
+	
+	@Autowired
+	private CuratoreService curatoreService;
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -47,10 +56,12 @@ public class CollezioneController {
 	}
 	
 	@RequestMapping(value = "/collezione", method = RequestMethod.POST)
-	public String newCollezione(@ModelAttribute("collezione") Collezione collezione, 
+	public String newCollezione(@ModelAttribute("collezione") Collezione collezione,
+			@RequestParam("nomeCuratore") String nome,
 			Model model, BindingResult bindingResult) {
 		this.collezioneValidator.validate(collezione, bindingResult);
 		if (!bindingResult.hasErrors()) {
+			collezione.setCuratore(curatoreService.curatoriPerNome(nome));
 			this.collezioneService.inserisci(collezione);
 			model.addAttribute("collezioni", this.collezioneService.tutti());
 			return "collezioni.html";

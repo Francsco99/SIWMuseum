@@ -23,7 +23,7 @@ public class CuratoreService {
 	}
 	
 	@Transactional
-	public List<Curatore> curatoriPerNome(String nome){
+	public Curatore curatoriPerNome(String nome){
 		return curatoreRepository.findByNome(nome);
 	}
 	

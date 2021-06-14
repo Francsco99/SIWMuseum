@@ -68,6 +68,12 @@
         <span th:if="${#fields.hasErrors('biografia')}" th:errors="*{biografia}"></span>
       </div>
 
+      <div>
+        <span>Nome di un'opera:</span>
+        <span><input type="text" th:name="opera" /></span>
+        <span th:if="${#fields.hasErrors('biografia')}" th:errors="*{biografia}"></span>
+      </div>
+
     </div>
 
     <div>

@@ -37,8 +37,8 @@
       </div>
 
        <div>
-        <span>Collezione:</span>
-        <span><input type="text" th:field="*{collezione}" /></span>
+        <span>Artista:</span>
+        <span><input type="text" th:name="artista" /></span>
         <span th:if="${#fields.hasErrors('collezione')}" th:errors="*{collezione}"></span>
       </div>
 

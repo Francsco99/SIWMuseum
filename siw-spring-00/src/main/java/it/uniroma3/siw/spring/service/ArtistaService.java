@@ -23,7 +23,7 @@ public class ArtistaService {
 	}
 	
 	@Transactional
-	public List<Artista> artistiPerNome(String nome){
+	public Artista artistiPerNome(String nome){
 		return artistaRepository.findByNome(nome);
 	}
 	

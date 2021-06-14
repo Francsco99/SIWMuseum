@@ -49,6 +49,11 @@
 </section>
 
 <h2>Opere:</h2>
+<ul>
+	<li th:each="opera : ${artista.opere}">
+		<div th:text="${opera.nome}" ></div>
+	</li>
+</ul>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>
 </html>

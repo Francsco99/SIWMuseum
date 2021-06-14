@@ -29,6 +29,12 @@
         <span><input type="text" th:field="*{descrizione}" /></span>
         <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
       </div>
+      
+        <div>
+        <span>Curatore:</span>
+        <span><input type="text" th:name="nomeCuratore" /></span>
+        <span th:if="${#fields.hasErrors('curatore')}" th:errors="*{curatore}"></span>
+      </div>
 
     </div>
 
