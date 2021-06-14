@@ -1,0 +1,71 @@
+body{
+  background-color: #c5e5fa;
+}
+header{
+  font-family: 'Girassol', cursive;
+  text-align: center;
+  font-size: 50px;
+}
+
+section.info{
+	padding: 20px;
+}
+
+h2{
+  font-family: 'Open Sans', sans-serif;
+}
+
+#flex-container-1{
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+}
+
+a.flex-item-1{
+  padding: 3px;
+  border: 1px solid black;
+  width: auto;
+  height: auto;
+}
+
+div.biografia{
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px;
+}
+
+#flex-container-2{
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+a.flex-item-2{
+  padding: 3px;
+  border: 2px solid black;
+  width: 600px;
+  margin:5px;
+}
+
+a.flex-item-2:hover {
+  border: 2px solid #777;
+}
+
+span.descrittori{
+  font-family: 'Open sans', sans-serif;
+  font-weight: bold;
+}
+
+footer{
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  background-color: #a2d7fa;
+}
+
+#foot{
+  word-spacing: 30px;
+}

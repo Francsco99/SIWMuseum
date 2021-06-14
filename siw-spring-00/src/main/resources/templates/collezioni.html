@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Museo Villa Bonelli - Collezioni</title>
+	<link th:href="@{/css/collezioni.css}" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+</head>
+<body>
+	<header>Collezioni</header>
+
+	<section id="flex-container-1">
+		<ul id="lista">
+			<li class="elemento" th:each="collezione : ${collezioni}">
+				<div class="flex-item">
+					<a href="https://i.postimg.cc/906G0CkF/sogno-dali.jpg">
+						<img src="https://i.postimg.cc/906G0CkF/sogno-dali.jpg" 
+						alt="${collezione.nome}"
+						height="300">
+					</a>
+					<div class="desc" th:text="${collezione.nome}">
+					</div>
+				</div>
+			</li>
+		</ul>
+	</body>
+
+	<footer th:replace="fragments/base.html :: fondo"></footer>
+
+	</html>

@@ -1,0 +1,59 @@
+body{
+  text-align: center;
+  background-color: #ffd6f4;
+}
+header{
+  font-family: 'Girassol', cursive;
+  font-size: 50px;
+}
+
+#flex-container-1{
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-basis: auto;
+}
+#flex-container-2{
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-basis: auto;
+}
+
+
+.flex-item {
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 500px;
+  height: auto;
+  flex-basis: auto;
+}
+
+div.flex-item:hover {
+  border: 2px solid #777;
+}
+
+#lista {
+  display: flex;
+  flex-direction: row; <-- not needed as this is the default behavior
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.elemento{
+  list-style-type: none ;
+}
+footer{
+  margin: 500px 0 0 0;
+  text-align: center;
+  background-color: #ffbfee;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#foot{
+  word-spacing: 30px;
+}

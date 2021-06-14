@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Museo Villa Bonelli - Artista</title>
+  <link th:href="@{/css/artista.css}" rel="stylesheet">
+	 <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+</head>
+
+<body th:if="${artista}" th:object="${artista}">
+	<header th:text="|*{nome} *{cognome}|"></header>
+</body>
+
+<section id="flex-container-1">
+	<div class="flex-item" th:if="${artista}" th:object="${artista}">
+		<div>
+			<span class="descrittori">Data di nascita: </span>
+			<span th:text="*{dataNascita}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Data di morte: </span>
+			<span th:text="*{dataMorte}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Luogo di nascita: </span>
+			<span th:text="*{luogoNascita}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Luogo di morte: </span>
+			<span th:text="*{luogoMorte}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Nazionalità: </span>
+			<span th:text="*{nazionalita}"></span>
+		</div> 
+	</div>
+	<a class="flex-item-1" href="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg">
+		<img src="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg"
+		height="300">
+	</a>
+</section>
+
+<section class="biografia">
+	<h2>Biografia:</h2>
+	<div th:if="${artista}" th:object="${artista}" class="biografia" th:text="*{biografia}"></div>
+</section>
+
+<h2>Opere:</h2>
+
+<footer th:replace="fragments/base.html :: fondo"></footer>
+</html>
+
+</html>
+

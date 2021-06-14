@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Museo Villa Bonelli - Aggiungi un curatore</title>
+</head>
+
+<body>
+  <div>
+    <h4>Inserisci i dati di un curatore</h4>
+  </div>
+
+  <form th:action="@{/curatore}" method="POST" th:object="${curatore}">
+    <div th:if="${#fields.hasGlobalErrors()}">
+      <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+    </div>
+
+    <div>
+      
+     <div>
+        <span>Nome:</span>
+        <span><input type="text" th:field="*{nome}" /></span>
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+      </div>
+
+      <div>
+        <span>Cognome:</span>
+        <span><input type="text" th:field="*{cognome}" /></span>
+        <span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+      </div>
+
+       <div>
+        <span>Luogo di nascita:</span>
+        <span><input type="text" th:field="*{luogoNascita}" /></span>
+        <span th:if="${#fields.hasErrors('luogoNascita')}" th:errors="*{luogoNascita}"></span>
+      </div>
+
+      <div>
+        <span>Email:</span>
+        <span><input type="text" th:field="*{email}" /></span>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+      </div>
+
+      <div>
+        <span>Telefono:</span>
+        <span><input type="text" th:field="*{telefono}" /></span>
+        <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></span>
+      </div>
+
+        <div>
+        <span>Matricola:</span>
+        <span><input type="text" th:field="*{matricola}" /></span>
+        <span th:if="${#fields.hasErrors('matricola')}" th:errors="*{matricola}"></span>
+      </div>
+
+    </div>
+
+    <div>
+      <span><button type="submit">Invio</button></span>
+    </div>
+  </form>
+</body>
+
+</html>
