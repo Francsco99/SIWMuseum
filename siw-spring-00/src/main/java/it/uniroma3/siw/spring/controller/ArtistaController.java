@@ -26,7 +26,7 @@ public class ArtistaController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	//SANCRISPINO è MEGLIOoo
+	//SANCRISPINO è MEGLIOoosssagags
 
 	@RequestMapping(value="/addArtista", method = RequestMethod.GET)
 	public String addArtista(Model model) {
