@@ -27,6 +27,7 @@ public class ArtistaValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "luogoNascita","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nazionalita","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "biografia","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "immagine","required");
 
 		if(!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");

@@ -16,8 +16,8 @@
 		<li class="elemento" th:each="artista : ${artisti}">
 			<div class="flex-item">
 				<a th:href="@{'/artista' + '/' + ${artista.id}}">
-					<img src="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg" 
-					alt="${artista.nome}"
+					<img th:src="${artista.immagine}" 
+					th:alt="|${artista.nome} ${artista.cognome}|"
 					height="300">
 				</a>
 				<div class="desc" th:text="|${artista.nome} ${artista.cognome}|">

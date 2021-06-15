@@ -7,7 +7,7 @@
 
 <body>
 	<header>
-		Artisti
+		Collezioni
 	</header>
 </body>
 
@@ -16,8 +16,8 @@
 		<li class="elemento" th:each="collezione : ${collezioni}">
 			<div class="flex-item">
 				<a th:href="@{'/collezione' + '/' + ${collezione.id}}">
-					<img src="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg" 
-					alt="${collezione.nome}"
+					<img th:src="${collezione.immagine}" 
+					th:alt="${collezione.nome}"
 					height="300">
 				</a>
 				<div class="desc" th:text="${collezione.nome}">

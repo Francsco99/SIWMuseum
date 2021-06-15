@@ -24,6 +24,7 @@ public class OperaValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titolo","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dataRealizzazione","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descrizione","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "immagine","required");
 		if(!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
 			if(this.operaService.alreadyExists((Opera)target)){

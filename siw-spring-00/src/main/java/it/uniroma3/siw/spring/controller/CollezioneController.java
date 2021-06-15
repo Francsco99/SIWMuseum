@@ -48,6 +48,8 @@ public class CollezioneController {
 		
 	}
 	
+	/*Si occupa di gestire la richiesta quando viene selezionato
+	 * il link della pagina collezioni*/
 	@RequestMapping(value="/collezioni",method= RequestMethod.GET)
 	public String getCollezioni(Model model) {
 		model.addAttribute("collezioni", this.collezioneService.tutti());

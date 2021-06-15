@@ -27,6 +27,7 @@ public class CollezioneValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descrizione","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "immagine","required");
 
 		if(!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");

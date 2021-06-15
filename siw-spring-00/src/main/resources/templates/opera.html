@@ -12,7 +12,7 @@
 <section class="image">
 	<div>
 		<a href="opera">
-			<img th:if="${opera}" th:object="${opera}" src="" alt="${opera.titolo}">
+			<img th:if="${opera}" th:object="${opera}" th:src="${opera.immagine}" th:alt="${opera.titolo}">
 		</a>
 	</div>
 </section>
