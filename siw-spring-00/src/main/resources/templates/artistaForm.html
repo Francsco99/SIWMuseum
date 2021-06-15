@@ -64,6 +64,13 @@
         <span th:if="${#fields.hasErrors('biografia')}" th:errors="*{biografia}"></span>
       </div>
 
+      <div>
+        <span>URL immagine:</span>
+        <span><input type="text" th:field="*{immagine}" /></span>
+        <span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}"></span>
+      </div>
+
+
     </div>
 
     <div>

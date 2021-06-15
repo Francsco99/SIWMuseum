@@ -19,18 +19,24 @@
     <div>
       
      <div>
-        <span>Nome:</span>
-        <span><input type="text" th:field="*{nome}" /></span>
-        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-      </div>
+      <span>Nome:</span>
+      <span><input type="text" th:field="*{nome}" /></span>
+      <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+    </div>
 
-      <div>
-        <span>Descrizione:</span>
-        <span><input type="text" th:field="*{descrizione}" /></span>
-        <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-      </div>
-      
-          <div>
+    <div>
+      <span>Descrizione:</span>
+      <span><input type="text" th:field="*{descrizione}" /></span>
+      <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+    </div>
+
+    <div>
+      <span>URL immagine:</span>
+      <span><input type="text" th:field="*{immagine}" /></span>
+      <span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}"></span>
+    </div>
+    
+    <div>
       <span>Curatore:</span>
       <span>
         <select th:field="${collezione.curatore}">
@@ -40,12 +46,12 @@
       </span>
     </div>
 
-    </div>
+  </div>
 
-    <div>
-      <span><button type="submit">Invio</button></span>
-    </div>
-  </form>
+  <div>
+    <span><button type="submit">Invio</button></span>
+  </div>
+</form>
 </body>
 
 </html>

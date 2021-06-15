@@ -16,6 +16,8 @@ public class Collezione {
 	
 	@Lob
 	private String descrizione;
+	
+	private String immagine;
 
 	@ManyToOne
 	private Museo museo;
@@ -87,6 +89,14 @@ public class Collezione {
 	public String toString() {
 		return "Collezione [id=" + id + ", nome=" + nome + ", descrizione=" + descrizione + ", museo=" + museo
 				+ ", curatore=" + curatore + ", opereInCollezione=" + opereInCollezione + "]";
+	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}
 
 }

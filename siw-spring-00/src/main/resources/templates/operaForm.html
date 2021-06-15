@@ -36,6 +36,13 @@
     </div>
 
     <div>
+      <span>URL immagine:</span>
+      <span><input type="text" th:field="*{immagine}" /></span>
+      <span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}"></span>
+    </div>
+
+
+    <div>
       <span>Artista:</span>
       <span>
         <select th:field="${opera.autore}">

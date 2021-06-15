@@ -21,6 +21,8 @@ public class Opera {
 	@Lob
 	private String descrizione;
 	
+	private String immagine;
+	
 	@ManyToOne
 	@JoinColumn(name="collezione_id")
 	private Collezione collezione;
@@ -90,5 +92,13 @@ public class Opera {
 	public String toString() {
 		return "Opera [id=" + id + ", titolo=" + titolo + ", dataRealizzazione=" + dataRealizzazione + ", descrizione="
 				+ descrizione + ", collezione=" + collezione + ", autore=" + autore + "]";
+	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}
 }

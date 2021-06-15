@@ -16,8 +16,8 @@
 		<li class="elemento" th:each="opera : ${opere}">
 			<div class="flex-item">
 				<a th:href="@{'/opera' + '/' + ${opera.id}}">
-					<img src="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg" 
-					alt="${opera.titolo}"
+					<img th:src="${opera.immagine}" 
+					th:alt="${opera.titolo}"
 					height="300">
 				</a>
 				<div class="desc" th:text="${opera.titolo}">

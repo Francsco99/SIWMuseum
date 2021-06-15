@@ -54,6 +54,12 @@
         <span th:if="${#fields.hasErrors('matricola')}" th:errors="*{matricola}"></span>
       </div>
 
+      <div>
+        <span>URL immagine:</span>
+        <span><input type="text" th:field="*{immagine}" /></span>
+        <span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}"></span>
+      </div>
+
     </div>
 
     <div>

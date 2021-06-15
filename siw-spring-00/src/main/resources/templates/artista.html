@@ -32,8 +32,9 @@
 			<span th:text="*{nazionalita}"></span>
 		</div> 
 	</div>
-	<a class="flex-item-1" href="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg">
-		<img src="https://i.postimg.cc/vZTgKMrN/caspar-friedrich.jpg"
+	<a class="flex-item-1" th:href="${artista.immagine}">
+		<img th:src="${artista.immagine}"
+		th:alt="|${artista.nome} ${artista.cognome}|"
 		height="300">
 	</a>
 </section>

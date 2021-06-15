@@ -31,6 +31,8 @@ public class Artista {
 	
 	private String nazionalita;
 
+	private String immagine;
+	
 	@Lob
 	private String biografia;
 	
@@ -131,6 +133,14 @@ public class Artista {
 
 	public void setBiografia(String biografia) {
 		this.biografia = biografia;
+	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}
 
 }
