@@ -9,6 +9,7 @@ import javax.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Table(name="artisti")
 public class Artista {
 
 	@Id
@@ -36,7 +37,7 @@ public class Artista {
 	@Lob
 	private String biografia;
 	
-	@OneToMany(mappedBy = "autore")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "autore")
 	private List<Opera> opere;
 	
 	public Artista() {

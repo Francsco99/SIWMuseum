@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
+@Table(name="curatori")
 public class Curatore {
 	
 	@Id

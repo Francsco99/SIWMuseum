@@ -7,6 +7,7 @@ import javax.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Table(name="opere")
 public class Opera {
 	
 	@Id
@@ -28,7 +29,7 @@ public class Opera {
 	private Collezione collezione;
 
 	@ManyToOne
-	@JoinColumn(name="autore")
+	@JoinColumn(name="autore_id")
 	private Artista autore;
 	
 	public Opera() {
