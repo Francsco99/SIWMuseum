@@ -6,6 +6,26 @@
 <head th:include="fragments/base.html :: testa"></head>
 
 <body>
-
+	<header>
+		Curatori
+	</header>
 </body>
+
+<section id="flex-container">
+	<ul id="lista">
+		<li class="elemento" th:each="curatore : ${curatori}">
+			<div class="flex-item">
+				<a th:href="@{'/curatore' + '/' + ${curatore.id}}">
+					<img th:src="${curatore.immagine}" 
+					th:alt="|${curatore.nome} ${curatore.cognome}|"
+					height="300">
+				</a>
+				<div class="desc" th:text="|${curatore.nome} ${curatore.matricola}|">
+				</div>
+			</div>
+		</li>
+	</ul>
+</section>
+
+<footer th:replace="fragments/base.html :: fondo"></footer>
 </html>

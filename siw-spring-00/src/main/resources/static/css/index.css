@@ -6,9 +6,11 @@ header{
   font-family: 'Girassol', cursive;
   font-size: 50px;
 }
-#barra_alta{
+
+nav{
   font-family: 'Open Sans', sans-serif;
   text-align: center;
+  background-color: ;
   padding: 10 0 10 0;
   font-size: 30;
   word-spacing: 50;

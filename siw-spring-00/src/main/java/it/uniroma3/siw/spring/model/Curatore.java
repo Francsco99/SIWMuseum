@@ -23,6 +23,8 @@ public class Curatore {
 	private String telefono;
 	
 	private String matricola;
+	
+	private String immagine;
 
 	@OneToMany(mappedBy = "curatore")
 	private List<Collezione> collezioniCurate;
@@ -118,6 +120,14 @@ public class Curatore {
 		return "Curatore [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", luogoNascita=" + luogoNascita
 				+ ", email=" + email + ", telefono=" + telefono + ", matricola=" + matricola + ", collezioniCurate="
 				+ collezioniCurate + ", museoInCuiLavora=" + museoInCuiLavora + "]";
+	}
+
+	public String getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(String immagine) {
+		this.immagine = immagine;
 	}
 
 }
