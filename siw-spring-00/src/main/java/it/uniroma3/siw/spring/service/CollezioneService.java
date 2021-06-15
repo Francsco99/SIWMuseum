@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.spring.model.Collezione;
+import it.uniroma3.siw.spring.model.Curatore;
 import it.uniroma3.siw.spring.repository.CollezioneRepository;
 
 @Service
@@ -39,6 +40,11 @@ public class CollezioneService {
 			return optional.get();
 		else 
 			return null;
+	}
+	
+	@Transactional
+	public List<Collezione> collezioniPerCuratore(Curatore curatore){
+		return collezioneRepository.findByCuratore(curatore);
 	}
 	
 	@Transactional

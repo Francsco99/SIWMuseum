@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.spring.model.Curatore;
+import it.uniroma3.siw.spring.service.CollezioneService;
 import it.uniroma3.siw.spring.service.CuratoreService;
 import it.uniroma3.siw.spring.validator.CuratoreValidator;
 
@@ -20,6 +21,9 @@ public class CuratoreController {
 	
 	@Autowired
 	private CuratoreService curatoreService;
+	
+	@Autowired
+	private CollezioneService collezioneService;
 
 	@Autowired
 	private CuratoreValidator curatoreValidator;
@@ -30,12 +34,17 @@ public class CuratoreController {
 	public String addCuratore(Model model) {
 		logger.debug("addCuratore");
 		model.addAttribute("curatore", new Curatore());
+		model.addAttribute("collezioni", this.collezioneService.tutti());
 		return "curatoreForm.html";
 	}
 
 	@RequestMapping(value = "/curatore/{id}", method = RequestMethod.GET)
 	public String getCuratore(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("artista", this.curatoreService.curatorePerId(id));
+		Curatore curatore = curatoreService.curatorePerId(id);
+		
+		model.addAttribute("curatore", curatore);
+
+		model.addAttribute("collezioni", this.collezioneService.collezioniPerCuratore(curatore));
 		return "curatore.html";
 	}
 

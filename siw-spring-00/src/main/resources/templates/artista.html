@@ -39,17 +39,25 @@
 	</a>
 </section>
 
-<section class="biografia">
+<section id="biografia">
 	<h2>Biografia:</h2>
 	<div th:if="${artista}" th:object="${artista}" class="biografia" th:text="*{biografia}"></div>
 </section>
 
 <h2>Opere:</h2>
-<ul>
-	<li th:each="opera : ${opere}">
-		<div th:text="${opera.titolo}" ></div>
-	</li>
-</ul>
+<div class="opere" id="flex-container-2">
+	<ul id="lista">
+		<li class="elemento" th:each="opera : ${opere}">
+			<a class="flex-item-2" th:href="@{/opera}">
+				<img th:src="${opera.immagine}"
+				width="600">
+				<div th:text="${opera.titolo}"></div>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<a th:href="@{'/artista' + '/' + ${artista.id} + '/modificaOpere'}">modifica opere</a>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>
 </html>

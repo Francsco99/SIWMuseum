@@ -54,11 +54,21 @@
         <span th:if="${#fields.hasErrors('matricola')}" th:errors="*{matricola}"></span>
       </div>
 
-      <div>
-        <span>URL immagine:</span>
+        <div>
+        <span>Immagine:</span>
         <span><input type="text" th:field="*{immagine}" /></span>
         <span th:if="${#fields.hasErrors('immagine')}" th:errors="*{immagine}"></span>
       </div>
+
+        <div>
+      <span>Collezione:</span>
+      <span>
+        <select th:field="${curatore.collezioniCurate}">
+          <option value="0">Seleziona collezioni</option>
+          <option th:each="collezione : ${collezioni}" th:value="${collezione.id}" th:text="${collezione.nome}"></option>
+        </select>
+      </span>
+    </div>
 
     </div>
 

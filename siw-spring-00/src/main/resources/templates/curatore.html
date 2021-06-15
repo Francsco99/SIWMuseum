@@ -5,7 +5,51 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
-<body>
-
+<body th:if="${curatore}" th:object="${curatore}">
+	<header th:text="|*{nome} *{cognome}|"></header>
 </body>
+
+<section id="flex-container-1">
+	<div class="flex-item" th:if="${curatore}" th:object="${curatore}">
+		<div>
+			<span class="descrittori">Luogo di nascita: </span>
+			<span th:text="*{luogoNascita}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Email: </span>
+			<span th:text="*{email}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Telefono: </span>
+			<span th:text="*{telefono}"></span>
+		</div> 
+
+		<div>
+			<span class="descrittori">Matricola: </span>
+			<span th:text="*{matricola}"></span>
+		</div> 
+	</div>
+	<a class="flex-item-1" th:href="${curatore.immagine}">
+		<img th:src="${curatore.immagine}"
+		th:alt="|${curatore.nome} ${curatore.cognome}|"
+		height="300">
+	</a>
+</section>
+
+<h2>Collezioni Curate:</h2>
+<div class="opere" id="flex-container-2">
+	<ul id="lista">
+		<li class="elemento" th:each="collezione : ${collezioni}">
+			<a class="flex-item-2" th:href="@{/collezione}">
+				<img th:src="${collezione.immagine}"
+				width="600">
+				<div th:text="${collezione.nome}"></div>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<a th:href="@{'/curatore' + '/' + ${curatore.id} + '/modificaCollezioni'}">modifica collezioni</a>
+
+<footer th:replace="fragments/base.html :: fondo"></footer>
 </html>

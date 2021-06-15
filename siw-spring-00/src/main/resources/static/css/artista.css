@@ -7,14 +7,6 @@ header{
   font-size: 50px;
 }
 
-section.info{
-	padding: 20px;
-}
-
-h2{
-  font-family: 'Open Sans', sans-serif;
-}
-
 #flex-container-1{
   padding: 10px;
   font-family: 'Open Sans', sans-serif;
@@ -24,14 +16,19 @@ h2{
   justify-content: space-between;
 }
 
-a.flex-item-1{
+.descrittori{
+  font-family: 'Open sans', sans-serif;
+  font-weight: bold;
+}
+
+.flex-item-1{
   padding: 3px;
   border: 1px solid black;
   width: auto;
   height: auto;
 }
 
-div.biografia{
+#biografia{
   font-family: 'Open Sans', sans-serif;
   padding: 10px;
 }
@@ -44,20 +41,20 @@ div.biografia{
   padding: 5px;
 }
 
-a.flex-item-2{
-  padding: 3px;
-  border: 2px solid black;
-  width: 600px;
-  margin:5px;
+
+#lista {
+  display: flex;
+  flex-direction: row; <-- not needed as this is the default behavior
+  flex-wrap: wrap;
+  list-style-type: none;
 }
 
-a.flex-item-2:hover {
-  border: 2px solid #777;
+.elemento{
+  list-style-type: none ;
 }
 
-span.descrittori{
-  font-family: 'Open sans', sans-serif;
-  font-weight: bold;
+h2{
+  font-family: 'Open Sans', sans-serif;
 }
 
 footer{
