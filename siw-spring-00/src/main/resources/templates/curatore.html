@@ -36,15 +36,17 @@
 	</a>
 </section>
 
-<h2>Collezioni Curate:</h2>
-<div class="opere" id="flex-container-2">
+<h2>Collezioni curate:</h2>
+<div id="flex-container-2">
 	<ul id="lista">
 		<li class="elemento" th:each="collezione : ${collezioni}">
-			<a class="flex-item-2" th:href="@{/collezione}">
-				<img th:src="${collezione.immagine}"
-				width="600">
-				<div th:text="${collezione.nome}"></div>
-			</a>
+			<div class="flex-item-2">
+				<a th:href="@{'/collezione' + '/' + ${collezione.id}}">
+					<img th:src="${collezione.immagine}"
+					width="600">
+					<div th:text="${collezione.nome}"></div>
+				</a>
+			</div>
 		</li>
 	</ul>
 </div>

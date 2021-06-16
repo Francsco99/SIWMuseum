@@ -57,8 +57,6 @@ public class ArtistaValidator implements Validator {
 				logger.debug("error parsing dataMorte");
 			} 
 			
-			
-		    
 			if(dataNascita.after(dataMorte)) {
 				logger.debug("non può essere nato dopo essere morto");
 				errors.reject("assurdoNascita");

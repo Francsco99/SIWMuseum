@@ -26,7 +26,7 @@
 
 <h2>Tutte le collezioni:</h2>
 <ul>
-	<li th:each="collezione : ${Collezione}">
+	<li th:each="collezione : ${Collezioni}">
 		<a th:href="@{'/collezione' + '/' + ${collezione.id}}" >
 			<span class="desc" th:text=" ${collezione.nome}"></span>
 		</a>

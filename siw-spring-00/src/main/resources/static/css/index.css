@@ -10,10 +10,9 @@ header{
 nav{
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  background-color: ;
-  padding: 10 0 10 0;
-  font-size: 30;
-  word-spacing: 50;
+  padding: 10px;
+  font-size: 30px;
+  word-spacing: 30px;
 }
 
 .flex-item {

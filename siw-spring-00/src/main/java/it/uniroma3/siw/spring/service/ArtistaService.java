@@ -34,6 +34,11 @@ public class ArtistaService {
 	}
 	
 	@Transactional
+	public List<Artista> artistiPerNomeOCognome(String nome, String cognome){
+		return artistaRepository.findByNomeOrCognome(nome, cognome);
+	}
+	
+	@Transactional
 	public List<Artista> artistiPerCognome(String cognome){
 		return artistaRepository.findAllByCognome(cognome);
 	}

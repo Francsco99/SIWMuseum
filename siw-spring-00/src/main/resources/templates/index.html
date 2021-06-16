@@ -9,17 +9,16 @@
   
   <header>Museo Villa Bonelli</header>
 
-  <nav id="barra_alta"> 
+  <nav> 
     <a href="artisti">Artisti</a>
     <a href="collezioni">Collezioni</a>
     <a href="opere">Opere</a>
     <a href="curatori">Curatori</a>
-    <a href="informazioni">Informazioni</a>
-    <input type="text" placeholder="Search..">
-    <span><button type="submit">Invio</button></span>
+    <!--<a href="informazioni">Informazioni</a>-->
   </nav>
   
-  <form th:action="@{/index}" method="GET">
+  <form th:action="@{/ricerca}" method="GET">
+    <span>Cerca nel museo</span>
   	<span><input type="text" name="cerca" required /></span>
   	<span><button type="submit">Cerca</button></span>
   </form>

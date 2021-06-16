@@ -7,6 +7,11 @@ header{
   font-size: 50px;
 }
 
+#biografia{
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px;
+}
+
 #flex-container-1{
   padding: 10px;
   font-family: 'Open Sans', sans-serif;
@@ -26,11 +31,6 @@ header{
   border: 1px solid black;
   width: auto;
   height: auto;
-}
-
-#biografia{
-  font-family: 'Open Sans', sans-serif;
-  padding: 10px;
 }
 
 #flex-container-2{

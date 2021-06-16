@@ -8,7 +8,7 @@ import java.util.*;
 
 public interface CollezioneRepository extends CrudRepository<Collezione,Long> {
 
-	public Collezione findByNome(String nome);
+	public List<Collezione> findByNome(String nome);
 	
 	public List<Collezione> findAll();
 	

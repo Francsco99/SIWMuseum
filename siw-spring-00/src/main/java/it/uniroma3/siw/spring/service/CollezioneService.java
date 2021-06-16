@@ -24,7 +24,7 @@ public class CollezioneService {
 	}
 	
 	@Transactional
-	public Collezione collezionePerNome(String nome){
+	public List<Collezione> collezioniPerNome(String nome){
 		return collezioneRepository.findByNome(nome);
 	}
 	
@@ -49,8 +49,8 @@ public class CollezioneService {
 	
 	@Transactional
 	public boolean alreadyExists(Collezione collezione) {
-		Collezione collezioneEsistente = this.collezioneRepository.findByNome(collezione.getNome());
-		if(collezione.equals(collezioneEsistente))
+		List<Collezione> collezioni = this.collezioneRepository.findByNome(collezione.getNome());
+		if(collezioni.size()>0)
 			return true;
 		else 
 			return false;
