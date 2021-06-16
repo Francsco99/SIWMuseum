@@ -1,5 +1,10 @@
 package it.uniroma3.siw.spring.validator;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +40,32 @@ public class ArtistaValidator implements Validator {
 				logger.debug("e' un duplicato");
 				errors.reject("duplicato");
 			}
+			
+			SimpleDateFormat formatter=new SimpleDateFormat("YYYY-MM-DD");  
+		    Date dataNascita = new Date();
+			try {
+				dataNascita = formatter.parse("dataNascita");
+			} catch (ParseException e) {
+				logger.debug("error parsing dataNascita");
+				
+			}  
+		    
+			Date dataMorte = new Date();
+			try {
+				dataMorte = formatter.parse("dataMorte");
+			} catch (ParseException e) {
+				logger.debug("error parsing dataMorte");
+			} 
+			
+			
+		    
+			if(dataNascita.after(dataMorte)) {
+				logger.debug("non può essere nato dopo essere morto");
+				errors.reject("assurdoNascita");
+			}
+			
+			else  logger.debug("non ci vedo niente di strano");
+		
 		}
 	}
 

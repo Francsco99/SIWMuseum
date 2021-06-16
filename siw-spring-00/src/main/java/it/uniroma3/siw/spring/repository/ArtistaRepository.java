@@ -8,6 +8,10 @@ public interface ArtistaRepository extends CrudRepository<Artista,Long> {
 
 	public Artista findByNome(String nome);
 	
+	public List<Artista> findAllByNome(String nome);
+	
+	public List<Artista> findAllByCognome(String cognome);
+	
 	public List<Artista> findByNomeOrCognome(String nome, String cognome);
 	
 	public List<Artista> findByNomeAndCognome(String nome, String cognome);

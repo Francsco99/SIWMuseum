@@ -24,7 +24,7 @@ public class OperaService {
 	}
 	
 	@Transactional
-	public List<Opera> OperePerTitolo(String titolo){
+	public List<Opera> operePerTitolo(String titolo){
 		return operaRepository.findByTitolo(titolo);
 	}
 	

@@ -22,9 +22,20 @@ public class ArtistaService {
 		return artistaRepository.save(artista);
 	}
 	
+
 	@Transactional
-	public Artista artistiPerNome(String nome){
+	public Artista artistaPerNome(String nome){
 		return artistaRepository.findByNome(nome);
+	}
+	
+	@Transactional
+	public List<Artista> artistiPerNome(String nome){
+		return artistaRepository.findAllByNome(nome);
+	}
+	
+	@Transactional
+	public List<Artista> artistiPerCognome(String cognome){
+		return artistaRepository.findAllByCognome(cognome);
 	}
 	
 	@Transactional

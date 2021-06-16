@@ -16,6 +16,11 @@
     <a href="curatori">Curatori</a>
     <a href="informazioni">Informazioni</a>
   </nav>
+  
+  <form th:action="@{/index}" method="GET">
+  	<span><input type="text" name="cerca" required /></span>
+  	<span><button type="submit">Cerca</button></span>
+  </form>
 
   <div id="flex-container-1">
     <div class="gallery flex-item">
