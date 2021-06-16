@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.spring.model.Artista;
 import it.uniroma3.siw.spring.service.ArtistaService;
@@ -27,6 +28,9 @@ public class ArtistaController {
 
 	@Autowired
 	private ArtistaValidator artistaValidator;
+
+	/*variabile temporanea da usare durante la validazione della form*/
+	private Artista artistaTemp;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -50,6 +54,9 @@ public class ArtistaController {
 		return "artista.html";
 	}
 
+	/*Si occupa della richiesta quando viene selezionato
+	 * il link per modificare le opere di un artista dentro
+	 * la pagina dell'artista*/
 	@RequestMapping(value = "artista/{id}/modificaOpere", method = RequestMethod.GET)
 	public String editOpereArtista(@PathVariable("id") Long id, Model model) {
 		Artista artista = this.artistaService.artistaPerId(id);
@@ -68,16 +75,32 @@ public class ArtistaController {
 	}
 
 	/*raccoglie e valida i dati della form*/
-	@RequestMapping(value = "/artista", method = RequestMethod.POST)
+	@RequestMapping(value = "/inserisciArtista", method = RequestMethod.POST)
 	public String newArtista(@ModelAttribute("artista") Artista artista, 
 			Model model, BindingResult bindingResult) {
 		this.artistaValidator.validate(artista, bindingResult);
 		if (!bindingResult.hasErrors()) {
-			this.artistaService.inserisci(artista);
-			model.addAttribute("artisti", this.artistaService.tutti());
-			return "artisti.html";
+			logger.debug("passo alla conferma");
+			artistaTemp = artista;
+			return "confermaArtistaForm.html";
 		}
 		return "artistaForm.html";
 	} 
 
+	/*conferma l'inserimento dei dati nel db*/
+	@RequestMapping(value = "/confermaArtista", method = RequestMethod.POST)
+	public String confermaArtista(Model model,
+			@RequestParam(value = "action") String comando) {
+		logger.debug("confermo e salvo dati artista");
+		model.addAttribute("artista",artistaTemp);
+
+		if(comando.equals("confirm")) {
+			this.artistaService.inserisci(artistaTemp);
+			model.addAttribute("artisti", this.artistaService.tutti());
+			return "artisti.html";
+		}
+		else {
+			return "artistaForm.html";
+		}
+	}
 }

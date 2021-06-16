@@ -40,7 +40,9 @@ public class OperaController {
 
 	@RequestMapping(value = "/opera/{id}", method = RequestMethod.GET)
 	public String getOpera(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("opera", this.operaService.operaPerId(id));
+		Opera opera = this.operaService.operaPerId(id);
+		model.addAttribute("opera", opera);
+		model.addAttribute("artista", opera.getAutore());
 		return "opera.html";
 	}
 

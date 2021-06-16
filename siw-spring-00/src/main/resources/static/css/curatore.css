@@ -28,11 +28,6 @@ header{
   height: auto;
 }
 
-#biografia{
-  font-family: 'Open Sans', sans-serif;
-  padding: 10px;
-}
-
 #flex-container-2{
   font-family: 'Open Sans', sans-serif;
   display: flex;

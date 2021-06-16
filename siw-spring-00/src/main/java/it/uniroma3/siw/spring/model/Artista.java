@@ -37,7 +37,7 @@ public class Artista {
 	@Lob
 	private String biografia;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "autore")
+	@OneToMany(mappedBy = "autore", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Opera> opere;
 	
 	public Artista() {
@@ -47,6 +47,7 @@ public class Artista {
 	public Artista(String nome, String luogoNascita) {
 		this.nome = nome;
 		this.luogoNascita = luogoNascita;
+		this.opere = new ArrayList<>();	
 	}
 	
 	public Long getId() {
