@@ -45,14 +45,16 @@
 </section>
 
 <h2>Opere:</h2>
-<div class="opere" id="flex-container-2">
+<div id="flex-container-2">
 	<ul id="lista">
 		<li class="elemento" th:each="opera : ${opere}">
-			<a class="flex-item-2" th:href="@{/opera}">
-				<img th:src="${opera.immagine}"
-				width="600">
-				<div th:text="${opera.titolo}"></div>
-			</a>
+			<div class="flex-item-2">
+				<a th:href="@{'/opera' + '/' + ${opera.id}}">
+					<img th:src="${opera.immagine}"
+					width="600">
+					<div th:text="${opera.titolo}"></div>
+				</a>
+			</div>
 		</li>
 	</ul>
 </div>

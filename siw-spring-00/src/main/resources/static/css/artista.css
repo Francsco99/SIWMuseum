@@ -41,6 +41,12 @@ header{
   padding: 5px;
 }
 
+.flex-item-2{
+  padding: 3px;
+  border: 2px solid black;
+  width: 600px;
+  margin:5px;
+}
 
 #lista {
   display: flex;
