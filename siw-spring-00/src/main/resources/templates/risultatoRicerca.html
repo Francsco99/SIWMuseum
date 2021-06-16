@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/artista.css}" rel="stylesheet">
+
+<head th:include="fragments/base.html :: testa"></head>
+
+<h2>Tutti gli artisti:</h2>
+<ul>
+	<li th:each="artista : ${Artisti}">
+		
+		<a th:href="@{'/artista' + '/' + ${artista.id}}">
+		<span class="desc" th:text="|${artista.nome} ${artista.cognome}|"></span>
+		</a>
+	</li>
+</ul>
+
+<h2>Tutte le opere:</h2>
+<ul>
+	<li th:each="opera : ${Opere}">
+		<a th:href="@{'/opera' + '/' + ${opera.id}}" >
+			<span class="desc" th:text=" ${opera.titolo}"></span>
+		</a>
+	</li>
+</ul>
+
+<h2>Tutte le collezioni:</h2>
+<ul>
+	<li th:each="collezione : ${Collezione}">
+		<a th:href="@{'/collezione' + '/' + ${collezione.id}}" >
+			<span class="desc" th:text=" ${collezione.nome}"></span>
+		</a>
+	</li>
+</ul>
+
+<footer th:replace="fragments/base.html :: fondo"></footer>
