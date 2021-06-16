@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/artistaForm.css}" rel="stylesheet">
+
+<head th:include="fragments/base.html :: testa"></head>
+
+
+<body>
+	<div>
+		<h4>
+			Ecco i dati che hai inserito:
+		</h4>
+	</div>
+
+	<form th:action="@{/confermaArtista}" method="POST" th:object="${artista}">
+
+		<div th:if="${artista}" th:object="${artista}">
+		<div>
+			<span class="descrittori">Nome: </span>
+			<span th:text="*{nome}"></span>
+		</div> 
+
+		<div>
+			<span class="descrittori">Cognome: </span>
+			<span th:text="*{cognome}"></span>
+		</div> 
+
+		<div>
+			<span class="descrittori">Data di nascita: </span>
+			<span th:text="*{dataNascita}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Data di morte: </span>
+			<span th:text="*{dataMorte}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Luogo di nascita: </span>
+			<span th:text="*{luogoNascita}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Luogo di morte: </span>
+			<span th:text="*{luogoMorte}"></span>
+		</div> 
+		<div>
+			<span class="descrittori">Nazionalità: </span>
+			<span th:text="*{nazionalita}"></span>
+		</div> 
+
+		<div>
+			<span class="descrittori">Biografia: </span>
+			<span th:text="*{biografia}"></span>
+		</div>
+
+		<div>
+			<span class="descrittori">Immagine: </span>
+			<img th:src="*{immagine}" width="500pxq">
+		</div>
+	</div>
+
+	<section>
+		<button th:type="submit" th:name="action" th:value="confirm">Conferma</button>
+		<button th:type="submit" th:name="action" th:value="cancel">Torna indietro</button>
+	</section>
+
+	</form>
+
+</body>
+</html>

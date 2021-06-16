@@ -24,6 +24,15 @@
 	<div th:if="${opera}" th:object="${opera}" th:text=*{descrizione}></div>
 </section>
 
+<section class="description">
+	<h2>
+		Autore:
+	</h2>
+	<div th:text=${artista.nome} th:object="${artista}">
+		<a th:href="@{'/artista' + '/' + ${artista.id}}"></a>
+	</div>
+</section>
+
 <footer th:replace="fragments/base.html :: fondo"></footer>
 
 </html>

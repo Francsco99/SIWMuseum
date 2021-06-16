@@ -19,48 +19,35 @@
     <span><button type="submit">Invio</button></span>
   </nav>
 
-  <div id="flex-container-1">
-    <div class="gallery flex-item">
-      <a target="_blank" href="file:///Users/francesco/Documents/University/3%20ANNO/II%20SEMESTRE/SISTEMI%20INFORMATIVI%20SUL%20WEB/sito%20museo/opera/opera.html">
-        <img src="https://i.postimg.cc/wMkyCj4S/viandante-nebbia.jpg" alt="Viandante">
-      </a>
-      <div class="desc">
-        Olio su tela di Caspar David Friedrich.
-        Hamburger Kunsthalle, Amburgo.
-      Movimento Romantico.</div>
-    </div>
-
-    <div class="gallery flex-item">
-      <a target="_blank" href="file:///Users/francesco/Documents/University/3%20ANNO/II%20SEMESTRE/SISTEMI%20INFORMATIVI%20SUL%20WEB/sito%20museo/images/salvador-dali.jpg">
-        <img src="https://i.postimg.cc/nrx9SD24/salvador-dali.jpg" alt="Dali">
-      </a>
-      <div class="desc">Olio su tela di Salvador Dalí.
-        Museum of Modern Art, New York.
-      Movimento Surrealista.</div>
-    </div>
-  </div>
-
-  <div id="flex-container-2">
-    <div class="gallery flex-item">
-      <a target="_blank" href="file:///Users/francesco/Documents/University/3%20ANNO/II%20SEMESTRE/SISTEMI%20INFORMATIVI%20SUL%20WEB/sito%20museo/images/botticelli-venere.jpeg">
-        <img src="https://i.postimg.cc/fW79t8WB/botticelli-venere.jpg" alt="Botticelli">
-      </a>
-      <div class="desc">Temepera su tela di lino di Sandro Botticelli.
-        Galleria degli Uffizi, Firenze.
-      Rinascimento Italiano.</div>
-    </div>
-
-    <div class="gallery flex-item">
-      <a target="_blank" href="file:///Users/francesco/Documents/University/3%20ANNO/II%20SEMESTRE/SISTEMI%20INFORMATIVI%20SUL%20WEB/sito%20museo/images/van-gogh.jpg">
-        <img src="https://i.postimg.cc/nLFP3v1x/mov-impressionista.jpg" alt="Van Gogh">
-      </a>
-      <div class="desc">Olio su tela di Vincent Van Gogh.
-        Museo d'Orsay,Parigi.
-        Movimento Impressionista.
+<div>
+  <ul id="flex-container">
+    <li class="elemento flex-item" th:each="opera, iterStat : ${opere}"
+    th:if="${iterStat.index == 0 || iterStat.index == 1}">
+        <a th:href="@{'/opera' + '/' + ${opera.id}}">
+          <img th:src="${opera.immagine}" 
+          th:alt="${opera.titolo}"
+          height="300">
+        </a>
+        <div class="desc" th:text="${opera.titolo}">
       </div>
-    </div>
-  </div>
-</body>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <ul id="flex-container-2">
+    <li class="elemento flex-item" th:each="opera, iterStat : ${opere}"
+    th:if="${iterStat.index == 2 || iterStat.index == 3}">
+        <a th:href="@{'/opera' + '/' + ${opera.id}}">
+          <img th:src="${opera.immagine}" 
+          th:alt="${opera.titolo}"
+          height="300">
+        </a>
+        <div class="desc" th:text="${opera.titolo}">
+      </div>
+    </li>
+  </ul>
+</div>
 
 <footer>
   <div>
