@@ -105,4 +105,5 @@ public class ArtistaController {
 			return "artistaForm.html";
 		}
 	}
+
 }

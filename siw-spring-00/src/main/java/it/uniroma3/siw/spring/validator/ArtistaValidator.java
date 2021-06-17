@@ -40,6 +40,7 @@ public class ArtistaValidator implements Validator {
 		Date dataDiNascita;
 		Date dataDiMorte;
 		
+		
 		try {
 			dataDiNascita = formatter.parse("dataNascita");
 			dataDiMorte = formatter.parse("dataMorte");
