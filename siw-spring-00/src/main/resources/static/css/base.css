@@ -1,9 +1,11 @@
 footer{
-  font-family: 'Open Sans', sans-serif;
+  position: absolute;
   text-align: center;
-  background-color: #a2d7fa;
+  background-color: #252625;
+  height: 60px;
+  width: 100%;
 }
 
-#foot{
-  word-spacing: 30px;
+footer a{
+  color: #ffffff;
 }

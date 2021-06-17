@@ -11,7 +11,7 @@ header{
   font-size: 50px;
 }
 
-#flex-container{
+.container{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -23,29 +23,18 @@ header{
   border: 2px solid black;
   border-radius: 5px;
   width: 500px;
+  overflow: hidden;
   height: auto;
+  list-style-type: none ;
 }
 
-#lista {
+.lista {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
 }
 
-.elemento{
-  list-style-type: none ;
-}
 
 div.flex-item:hover {
   border: 2px solid #777;
-}
-
-footer{
-  margin: 500px 0 0 0;
-  text-align: center;
-  background-color: #92fcb3;
-}
-
-#foot{
-  word-spacing: 30px;
 }

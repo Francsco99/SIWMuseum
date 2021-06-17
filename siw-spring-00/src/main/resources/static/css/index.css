@@ -2,56 +2,103 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-body{
-  text-align: center;
-  background-color: #ffd3c7;
+html {
+    position: relative;
+    min-height: 100%;
 }
+
 header{
   font-family: 'Girassol', cursive;
   font-size: 50px;
-}
-
-.navigation{
   text-align: center;
-  padding: 10px;
-  font-size: 30px;
-  margin: 0 0 30px 0;
 }
 
-.navigation a:hover{
-  word-spacing: 30px;
+body{
+  padding: 0;
+  background-color: #f5f3ea;
+  margin: 0 0 100px;
+}
+
+nav{
+  overflow: hidden;
+  background: #ffcc04;
+  line-height: 30px;
+}
+
+nav a{
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 18px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000;
+}
+
+nav a:hover{
   background: #ddd;
   color: #000;
 }
 
+nav .active{
+  background: #e3b910;
+}
+
+nav form{
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 16px;
+  margin-right: 100px;
+}
+
 .container{
-  margin: 50px 0 0 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.flex_item {
+.flex-item {
+  overflow: hidden;
   list-style-type: none ;
-  padding: 5px;
-  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  height: auto;
+  width: auto;
+  border: 2px solid black;
   border-radius: 5px;
-  width: 600px;
-  height: 400px;
+  text-align: center;
 }
 
-.flex_item:hover {
+.immagine{
+  max-width: 90%;
+  object-fit: fill;
+}
+
+.lista {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+div.flex-item:hover {
   border: 2px solid #777;
 }
 
-div.flex_item img {
-  height: 100%;
+footer{
+  margin: 200px 0 0 0;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background-color: #252625;
+  height: 60px;
   width: 100%;
-  object-fit: cover;
+  color: white;
+  padding: 20px 0 0 0;
 }
 
-.didascalia {
-  margin:  10px 0 0 0;
-  font-size: 20px;
-  text-align: center;
+footer a{
+  color: #ffffff;
 }

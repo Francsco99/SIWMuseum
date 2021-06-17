@@ -11,9 +11,9 @@
 	</header>
 </body>
 
-<section class="container">
+<div class="container">
 	<ul class="lista">
-		<li class="elemento" th:each="artista : ${artisti}">
+		<li th:each="artista : ${artisti}">
 			<div class="flex-item">
 			<a th:href="@{'/artista' + '/' + ${artista.id}}">
 					<img th:src="${artista.immagine}" 
@@ -24,7 +24,8 @@
 			</div>
 		</li>
 	</ul>
-</section>
+</div>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>
+
 </html>

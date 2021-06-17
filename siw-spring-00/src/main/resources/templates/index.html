@@ -5,60 +5,46 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
-<body>
-  
-  <header>Museo Villa Bonelli</header>
+<header>Museo Villa Bonelli</header>
 
-<nav class="navigation">
+<body>
+
+  <nav>
+    <a class="active" th:href="@{/}">Home</a>
     <a href="artisti">Artisti</a>
     <a href="collezioni">Collezioni</a>
     <a href="opere">Opere</a>
     <a href="curatori">Curatori</a>
-    <!--<a href="informazioni">Informazioni</a>-->
-</nav>
+    <a href="informazioni">Informazioni</a>
 
-  <form th:action="@{/ricerca}" method="GET">
-    <span>Cerca nel museo</span>
-    <span><input type="text" name="cerca" required /></span>
-    <span><button type="submit">Cerca</button></span>
-  </form>
+    <form th:action="@{/ricerca}" method="GET">
+      <span>Cerca nel museo</span>
+      <span><input type="text" name="cerca" required /></span>
+      <span><button type="submit">Cerca</button></span>
+    </form>
+  </nav>
 
-<div>
-  <ul class="container">
-    <li class="flex_item" th:each="opera, iterStat : ${opere}"
-    th:if="${iterStat.index <= 1}">
-        <a th:href="@{'/opera' + '/' + ${opera.id}}">
-          <img th:src="${opera.immagine}" 
-          th:alt="${opera.titolo}"
-          height="300">
-        </a>
-        <div class="didascalia" th:text="${opera.titolo}">
-      </div>
-    </li>
-  </ul>
-</div>
+</body>
 
-<div>
-  <ul class="container">
-    <li class="flex_item" th:each="opera, iterStat : ${opere}"
-    th:if="${iterStat.index > 1}">
-        <a th:href="@{'/opera' + '/' + ${opera.id}}">
-          <img th:src="${opera.immagine}" 
-          th:alt="${opera.titolo}"
-          height="300">
-        </a>
-        <div class="didascalia" th:text="${opera.titolo}">
-      </div>
-    </li>
-  </ul>
-</div>
+  <div class="container">
+    <ul class="lista">
+      <li th:each="opera: ${opere}" class="flex-item">
+        <div>
+          <a th:href="@{'/opera' + '/' + ${opera.id}}">
+            <img class="immagine"  th:src="${opera.immagine}" 
+            th:alt="${opera.titolo}"
+            height="300">
+          </a>
+          <div class="desc" th:text="${opera.titolo}"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
 
 <footer>
-  <div>
     <a href="addArtista"> Aggiungi artista</a>
     <a href="addOpera"> Aggiungi opera</a>
     <a href="addCollezione"> Aggiungi collezione</a>
     <a href="addCuratore"> Aggiungi curatore</a>
-  </div>
 </footer>
 </html>
