@@ -11,8 +11,8 @@
 	</header>
 </body>
 
-<section id="flex-container">
-	<ul id="lista">
+<section class="container">
+	<ul class="lista">
 		<li class="elemento" th:each="opera : ${opere}">
 			<div class="flex-item">
 				<a th:href="@{'/opera' + '/' + ${opera.id}}">

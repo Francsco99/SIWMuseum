@@ -43,6 +43,11 @@ public class OperaService {
 	}
 	
 	@Transactional
+	public void cancellaOpera(Opera opera) {
+		this.operaRepository.delete(opera);
+	}
+	
+	@Transactional
 	public List<Opera> operePerArtista(Artista autore){
 		return (List<Opera>) operaRepository.findByAutore(autore);
 	}

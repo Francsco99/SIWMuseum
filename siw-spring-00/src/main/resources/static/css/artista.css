@@ -1,3 +1,7 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
 body{
   background-color: #c5e5fa;
 }
@@ -8,13 +12,11 @@ header{
 }
 
 #biografia{
-  font-family: 'Open Sans', sans-serif;
   padding: 10px;
 }
 
 #flex-container-1{
   padding: 10px;
-  font-family: 'Open Sans', sans-serif;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -22,7 +24,6 @@ header{
 }
 
 .descrittori{
-  font-family: 'Open sans', sans-serif;
   font-weight: bold;
 }
 
@@ -33,38 +34,35 @@ header{
   height: auto;
 }
 
-#flex-container-2{
-  font-family: 'Open Sans', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 5px;
+.flex-container-2 {
+  width: auto;
+  display: inline-block;
 }
 
-.flex-item-2{
-  padding: 3px;
-  border: 2px solid black;
-  width: 600px;
-  margin:5px;
-}
-
-#lista {
-  display: flex;
-  flex-direction: row; <-- not needed as this is the default behavior
-  flex-wrap: wrap;
+ul {
   list-style-type: none;
 }
 
-.elemento{
-  list-style-type: none ;
+.immagine{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
-h2{
-  font-family: 'Open Sans', sans-serif;
+.flex-container-2  li{
+  margin: 10px 0;
+}
+
+.flex-container-2  div{
+  width: auto;
+  height: 200px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 footer{
-  font-family: 'Open Sans', sans-serif;
   text-align: center;
   background-color: #a2d7fa;
 }

@@ -67,6 +67,7 @@ public class MuseoController {
 		
 		logger.debug("ricerca: "+ cerca);
 		
+		model.addAttribute("Artisti", this.artistaService.artistiPerNomeECognome(cercaLower, cercaLower));
 		model.addAttribute("Artisti", this.artistaService.artistiPerNomeOCognome(cercaLower, cercaLower));
 		model.addAttribute("Opere", this.operaService.operePerTitolo(cercaLower));
 		model.addAttribute("Collezioni", this.collezioneService.collezioniPerNome(cercaLower));

@@ -3,7 +3,7 @@
 }
 
 body{
-  background-color: #f5dfa2;
+  background-color: #ffd6f4;
 }
 header{
   font-family: 'Girassol', cursive;
@@ -12,24 +12,19 @@ header{
 }
 
 section.image{
-	text-align: center;
-	padding: 10px 0 0 0;
-}
-div img{ 
-  width: 70%;
-  height: 70%;
-  border: 15px groove brown;
+  text-align: center;
+  padding: 10px 0 0 0;
 }
 
 section.description{
-	padding: 10px;
-	
+  padding: 10px;
+  
 }
 
 footer{
-	margin: 200px 0 0 0;
+  margin: 500px 0 0 0;
   text-align: center;
-  background-color: #f5d57a;
+  background-color: #ffbfee;
 }
 
 #foot{

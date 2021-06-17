@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/artistaForm.css}" rel="stylesheet">
+
+<head th:include="fragments/base.html :: testa"></head>
+
+
+<body>
+	<div>
+		<h4>
+			Ecco i dati che hai inserito:
+		</h4>
+	</div>
+
+	<form th:action="@{/confermaOpera}" method="POST" th:object="${opera}">
+
+		<div th:if="${opera}" th:object="${opera}">
+		<div>
+			<span class="descrittori">Titolo: </span>
+			<span th:text="*{titolo}"></span>
+		</div> 
+
+		<div>
+			<span class="descrittori">Data di realizzazione: </span>
+			<span th:text="*{dataRealizzazione}"></span>
+		</div> 
+
+		<div>
+			<span class="descrittori">Descrizione: </span>
+			<span th:text="*{descrizione}"></span>
+		</div>
+
+		<div>
+			<span class="descrittori">Immagine: </span>
+			<img th:src="*{immagine}" width="500pxq">
+		</div>
+	</div>
+
+	<div>
+		<span>Autore:</span>
+		<span th:text="|${opera.autore.nome} ${opera.autore.cognome}|"></span>
+	</div> 
+
+	<section>
+		<button th:type="submit" th:name="action" th:value="confirm">Conferma</button>
+		<button th:type="submit" th:name="action" th:value="cancel">Torna indietro</button>
+	</section>
+
+	</form>
+
+</body>
+</html>

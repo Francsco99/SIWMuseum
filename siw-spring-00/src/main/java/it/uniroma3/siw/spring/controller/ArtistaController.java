@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.spring.model.Artista;
+import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.spring.service.OperaService;
 import it.uniroma3.siw.spring.validator.ArtistaValidator;
+import net.bytebuddy.asm.Advice.This;
 
 @Controller
 public class ArtistaController {
@@ -66,6 +70,21 @@ public class ArtistaController {
 		return "editOpereArtista.html";
 	}
 
+	@RequestMapping(value="/eliminaOpere",method = RequestMethod.GET)
+	public String eliminaOpereArtista( Model model,
+			@RequestParam(value="listaOpere")Opera opera,
+			@RequestParam(value="action")String comando){
+		if(comando.equals("elimina")) {
+			logger.debug("lista opere");
+			model.addAttribute("artisti", this.artistaService.tutti());
+			return "artisti.html";
+		}
+		else {
+			model.addAttribute("artisti", this.artistaService.tutti());
+			return "artisti.html";
+		}
+	}
+
 	/*Si occupa di gestire la richiesta quando viene selezionato
 	 * il link della pagina artisti*/
 	@RequestMapping(value = "/artisti", method = RequestMethod.GET)
@@ -91,10 +110,9 @@ public class ArtistaController {
 	@RequestMapping(value = "/confermaArtista", method = RequestMethod.POST)
 	public String confermaArtista(Model model,
 			@RequestParam(value = "action") String comando) {
-		logger.debug("confermo e salvo dati artista");
 		model.addAttribute("artista",artistaTemp);
-
 		if(comando.equals("confirm")) {
+			logger.debug("confermo e salvo dati artista");
 			this.artistaService.inserisci(artistaTemp);
 			model.addAttribute("artisti", this.artistaService.tutti());
 			return "artisti.html";

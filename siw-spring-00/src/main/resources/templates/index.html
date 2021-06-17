@@ -9,45 +9,45 @@
   
   <header>Museo Villa Bonelli</header>
 
-  <nav> 
+<nav class="navigation">
     <a href="artisti">Artisti</a>
     <a href="collezioni">Collezioni</a>
     <a href="opere">Opere</a>
     <a href="curatori">Curatori</a>
     <!--<a href="informazioni">Informazioni</a>-->
-  </nav>
-  
+</nav>
+
   <form th:action="@{/ricerca}" method="GET">
     <span>Cerca nel museo</span>
-  	<span><input type="text" name="cerca" required /></span>
-  	<span><button type="submit">Cerca</button></span>
+    <span><input type="text" name="cerca" required /></span>
+    <span><button type="submit">Cerca</button></span>
   </form>
 
 <div>
-  <ul id="flex-container">
-    <li class="elemento flex-item" th:each="opera, iterStat : ${opere}"
-    th:if="${iterStat.index == 0 || iterStat.index == 1}">
+  <ul class="container">
+    <li class="flex_item" th:each="opera, iterStat : ${opere}"
+    th:if="${iterStat.index <= 1}">
         <a th:href="@{'/opera' + '/' + ${opera.id}}">
           <img th:src="${opera.immagine}" 
           th:alt="${opera.titolo}"
           height="300">
         </a>
-        <div class="desc" th:text="${opera.titolo}">
+        <div class="didascalia" th:text="${opera.titolo}">
       </div>
     </li>
   </ul>
 </div>
 
 <div>
-  <ul id="flex-container-2">
-    <li class="elemento flex-item" th:each="opera, iterStat : ${opere}"
-    th:if="${iterStat.index == 2 || iterStat.index == 3}">
+  <ul class="container">
+    <li class="flex_item" th:each="opera, iterStat : ${opere}"
+    th:if="${iterStat.index > 1}">
         <a th:href="@{'/opera' + '/' + ${opera.id}}">
           <img th:src="${opera.immagine}" 
           th:alt="${opera.titolo}"
           height="300">
         </a>
-        <div class="desc" th:text="${opera.titolo}">
+        <div class="didascalia" th:text="${opera.titolo}">
       </div>
     </li>
   </ul>

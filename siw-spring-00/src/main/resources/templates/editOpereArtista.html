@@ -16,6 +16,18 @@
 	</li>
 </ul>
 
+<div>
+	<form th:action="@{/eliminaOpere}" method="GET" >
+		<div><strong>Seleziona opera da cancellare:</strong>
+			<select th:name="listaOpere">
+				<option th:each="opera: ${opereArtista}"
+				th:value="${opera.id}" th:text="${opera.titolo}">
+			</select>
+		</div>
+		<button th:type="submit" th:name="action" th:value="elimina">Elimina</button>
+	</div>    
+</form>
+</div>
 
 <h2>Tutte le opere:</h2>
 <ul>
@@ -23,7 +35,6 @@
 		<div th:text="${opera.titolo}" ></div>
 	</li>
 </ul>
-
 
 <footer th:replace="fragments/base.html :: fondo"></footer>
 </html>
