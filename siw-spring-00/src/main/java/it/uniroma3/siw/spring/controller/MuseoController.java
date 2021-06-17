@@ -44,10 +44,12 @@ public class MuseoController {
 		List<Opera> opere = this.operaService.tutti();
 		List<Opera> randomList = new ArrayList<>();
 		Random rand = new Random();
-		for(int i = 0; i<4;i++) {
-			int randomIndex = rand.nextInt(opere.size());
-			randomList.add(opere.get(randomIndex));
-			opere.remove(randomIndex);
+		if(! (opere.size()<4) ) {
+			for(int i = 0; i<4;i++) {
+				int randomIndex = rand.nextInt(opere.size());
+				randomList.add(opere.get(randomIndex));
+				opere.remove(randomIndex);
+			}	
 		}
 		return randomList;
 	}
@@ -68,6 +70,7 @@ public class MuseoController {
 		logger.debug("ricerca: "+ cerca);
 		
 		model.addAttribute("Artisti", this.artistaService.artistiPerNomeOCognome(cercaLower, cercaLower));
+		logger.debug(cercaLower);
 		model.addAttribute("Opere", this.operaService.operePerTitolo(cercaLower));
 		model.addAttribute("Collezioni", this.collezioneService.collezioniPerNome(cercaLower));
 		model.addAttribute("cerca", cerca);

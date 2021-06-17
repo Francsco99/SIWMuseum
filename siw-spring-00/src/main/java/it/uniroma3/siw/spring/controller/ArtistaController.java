@@ -95,6 +95,8 @@ public class ArtistaController {
 		model.addAttribute("artista",artistaTemp);
 
 		if(comando.equals("confirm")) {
+			artistaTemp.setNome(artistaTemp.getNome().toLowerCase());             // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
+			artistaTemp.setCognome(artistaTemp.getCognome().toLowerCase());       // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
 			this.artistaService.inserisci(artistaTemp);
 			model.addAttribute("artisti", this.artistaService.tutti());
 			return "artisti.html";

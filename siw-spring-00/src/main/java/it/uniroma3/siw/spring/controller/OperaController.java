@@ -57,7 +57,8 @@ public class OperaController {
 			Model model, BindingResult bindingResult) 
 	{
 		this.operaValidator.validate(opera, bindingResult);
-		if (!bindingResult.hasErrors()) {
+		if (!bindingResult.hasErrors()) {  
+			opera.setTitolo(opera.getTitolo().toLowerCase());    // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
 			this.operaService.inserisci(opera);
 			model.addAttribute("opere", this.operaService.tutti());
 			return "opere.html";

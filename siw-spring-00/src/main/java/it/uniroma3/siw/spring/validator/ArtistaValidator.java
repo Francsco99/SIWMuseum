@@ -33,6 +33,26 @@ public class ArtistaValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nazionalita","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "biografia","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "immagine","required");
+		
+		SimpleDateFormat formatter=new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy");  
+	    
+	    
+		Date dataDiNascita;
+		Date dataDiMorte;
+		
+		try {
+			dataDiNascita = formatter.parse("dataNascita");
+			dataDiMorte = formatter.parse("dataMorte");
+			
+			if(dataDiNascita.after(dataDiMorte)) {
+				logger.debug("non può essere nato dopo essere morto");
+				errors.reject("assurdoNascita");
+			}
+		} 
+		
+		catch (ParseException e) {
+			System.out.println("parsing failed");
+		}		
 
 		if(!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
@@ -41,29 +61,7 @@ public class ArtistaValidator implements Validator {
 				errors.reject("duplicato");
 			}
 			
-			SimpleDateFormat formatter=new SimpleDateFormat("YYYY-MM-DD");  
-		    Date dataNascita = new Date();
-			try {
-				dataNascita = formatter.parse("dataNascita");
-			} catch (ParseException e) {
-				logger.debug("error parsing dataNascita");
 				
-			}  
-		    
-			Date dataMorte = new Date();
-			try {
-				dataMorte = formatter.parse("dataMorte");
-			} catch (ParseException e) {
-				logger.debug("error parsing dataMorte");
-			} 
-			
-			if(dataNascita.after(dataMorte)) {
-				logger.debug("non può essere nato dopo essere morto");
-				errors.reject("assurdoNascita");
-			}
-			
-			else  logger.debug("non ci vedo niente di strano");
-		
 		}
 	}
 
