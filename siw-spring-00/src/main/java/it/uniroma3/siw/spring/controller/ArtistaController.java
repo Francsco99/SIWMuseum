@@ -1,8 +1,11 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.time.LocalDate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,14 +35,19 @@ public class ArtistaController {
 
 	/*variabile temporanea da usare durante la validazione della form*/
 	private Artista artistaTemp;
+	
+	/*Data di oggi*/
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dataOggi= LocalDate.now();
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	/*Popola la form*/
 	@RequestMapping(value="/addArtista", method = RequestMethod.GET)
 	public String addArtista(Model model) {
-		logger.debug("addArtista");
+		logger.debug("PASSO ALLA FORM addArtista");
 		model.addAttribute("artista", new Artista());
+		model.addAttribute("dataOggi", dataOggi);
 		return "artistaForm.html";
 	}
 
@@ -67,21 +75,6 @@ public class ArtistaController {
 		return "editOpereArtista.html";
 	}
 
-	@RequestMapping(value="/eliminaOpere",method = RequestMethod.GET)
-	public String eliminaOpereArtista( Model model,
-			@RequestParam(value="listaOpere")Opera opera,
-			@RequestParam(value="action")String comando){
-		if(comando.equals("elimina")) {
-			logger.debug("lista opere");
-			model.addAttribute("artisti", this.artistaService.tutti());
-			return "artisti.html";
-		}
-		else {
-			model.addAttribute("artisti", this.artistaService.tutti());
-			return "artisti.html";
-		}
-	}
-
 	/*Si occupa di gestire la richiesta quando viene selezionato
 	 * il link della pagina artisti*/
 	@RequestMapping(value = "/artisti", method = RequestMethod.GET)
@@ -96,7 +89,7 @@ public class ArtistaController {
 			Model model, BindingResult bindingResult) {
 		this.artistaValidator.validate(artista, bindingResult);
 		if (!bindingResult.hasErrors()) {
-			logger.debug("passo alla conferma");
+			logger.debug("PASSO alla conferma");
 			artistaTemp = artista;
 			return "confermaArtistaForm.html";
 		}
@@ -107,19 +100,39 @@ public class ArtistaController {
 	@RequestMapping(value = "/confermaArtista", method = RequestMethod.POST)
 	public String confermaArtista(Model model,
 			@RequestParam(value = "action") String comando) {
-		logger.debug("confermo e salvo dati artista");
+
 		model.addAttribute("artista",artistaTemp);
 
 		if(comando.equals("confirm")) {
-			artistaTemp.setNome(artistaTemp.getNome().toLowerCase());             // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
-			artistaTemp.setCognome(artistaTemp.getCognome().toLowerCase());       // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
-			logger.debug("confermo e salvo dati artista");
+			/*cambio le stringhe con caratteri tutti minuscoli per facilitare la ricerca*/
+			artistaTemp.setNome(artistaTemp.getNome().toLowerCase());					
+			artistaTemp.setCognome(artistaTemp.getCognome().toLowerCase());				 
+			artistaTemp.setLuogoNascita(artistaTemp.getLuogoNascita().toLowerCase());   
+			artistaTemp.setLuogoNascita(artistaTemp.getLuogoMorte().toLowerCase());
+			
+			logger.debug("CONFERMO e SALVO dati artista");
+			logger.debug("DATA NASCITA: "+ artistaTemp.getDataNascita());
 			this.artistaService.inserisci(artistaTemp);
 			model.addAttribute("artisti", this.artistaService.tutti());
 			return "artisti.html";
 		}
 		else {
 			return "artistaForm.html";
+		}
+	}
+	
+	@RequestMapping(value="/eliminaOpere",method = RequestMethod.GET)
+	public String eliminaOpereArtista( Model model,
+			@RequestParam(value="listaOpere")Opera opera,
+			@RequestParam(value="action")String comando){
+		if(comando.equals("elimina")) {
+			logger.debug("lista opere");
+			model.addAttribute("artisti", this.artistaService.tutti());
+			return "artisti.html";
+		}
+		else {
+			model.addAttribute("artisti", this.artistaService.tutti());
+			return "artisti.html";
 		}
 	}
 

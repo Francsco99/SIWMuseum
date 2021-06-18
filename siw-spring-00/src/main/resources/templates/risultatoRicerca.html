@@ -7,10 +7,10 @@
 
 <header>Risultato della ricerca</header>
 
-<h2>Tutti gli artisti:</h2>
+<body>
+	<h2>Tutti gli artisti:</h2>
 <ul>
 	<li th:each="artista : ${Artisti}">
-		
 		<a th:href="@{'/artista' + '/' + ${artista.id}}">
 		<span class="desc" th:text="|${artista.nome} ${artista.cognome}|"></span>
 		</a>
@@ -34,5 +34,7 @@
 		</a>
 	</li>
 </ul>
+
+</body>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>

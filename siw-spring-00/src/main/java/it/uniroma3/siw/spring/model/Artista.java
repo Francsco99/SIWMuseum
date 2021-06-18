@@ -1,10 +1,18 @@
 package it.uniroma3.siw.spring.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,10 +29,10 @@ public class Artista {
 	private String cognome;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataNascita;
+	private LocalDate dataNascita;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataMorte;
+	private LocalDate dataMorte;
 
 	private String luogoNascita;
 	
@@ -74,19 +82,19 @@ public class Artista {
 		this.cognome = cognome;
 	}
 
-	public Date getDataNascita() {
+	public LocalDate getDataNascita() {
 		return dataNascita;
 	}
 
-	public void setDataNascita(Date dataNascita) {
+	public void setDataNascita(LocalDate dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 
-	public Date getDataMorte() {
+	public LocalDate getDataMorte() {
 		return dataMorte;
 	}
 
-	public void setDataMorte(Date dataMorte) {
+	public void setDataMorte(LocalDate dataMorte) {
 		this.dataMorte = dataMorte;
 	}
 

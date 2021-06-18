@@ -1,7 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,7 +16,7 @@ public class Opera {
 	private String titolo;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataRealizzazione;
+	private LocalDate dataRealizzazione;
 	
 	@Lob
 	private String descrizione;
@@ -36,7 +35,7 @@ public class Opera {
 		
 	}
 	
-	public Opera(String titolo, Date dataRealizzazione) {
+	public Opera(String titolo, LocalDate dataRealizzazione) {
 		this.titolo = titolo;
 		this.dataRealizzazione = dataRealizzazione;
 	}
@@ -57,11 +56,11 @@ public class Opera {
 		this.titolo = titolo;
 	}
 
-	public Date getDataRealizzazione() {
+	public LocalDate getDataRealizzazione() {
 		return dataRealizzazione;
 	}
 
-	public void setDataRealizzazione(Date dataRealizzazione) {
+	public void setDataRealizzazione(LocalDate dataRealizzazione) {
 		this.dataRealizzazione = dataRealizzazione;
 	}
 
