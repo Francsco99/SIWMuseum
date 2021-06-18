@@ -1,11 +1,5 @@
 package it.uniroma3.siw.spring.validator;
 
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,16 +29,13 @@ public class ArtistaValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "biografia","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "immagine","required");
 
+		/*Cast esplicito artista*/
 		Artista a = (Artista)target;
-		//SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");  
 
-		//LocalDate dataDiNascita;
-		//LocalDate dataDiMorte;
-
+		/*Data di nascita non puo essere dopo data di morte*/
 		if(a.getDataNascita().isAfter(a.getDataMorte())) {
 			logger.debug("non può essere nato dopo essere morto");
 			errors.reject("assurdoNascita");
-
 		}
 
 		if(!errors.hasErrors()) {
@@ -55,9 +46,7 @@ public class ArtistaValidator implements Validator {
 			}
 		}
 
-
 	}
-
 
 	@Override
 	public boolean supports(Class<?> clazz) {
