@@ -5,8 +5,21 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
+
+
 <body>
     <header>Informazioni</header>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.1537423570794!2d12.517532815941097!3d41.889550579221265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDUzJzIyLjQiTiAxMsKwMzEnMTEuMCJF!5e0!3m2!1sit!2sit!4v1624008228304!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    <nav th:replace="fragments/base.html :: barra"></nav>
+
+    <p align="center">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.1537423570794!2d12.517532815941097!3d41.889550579221265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDUzJzIyLjQiTiAxMsKwMzEnMTEuMCJF!5e0!3m2!1sit!2sit!4v1624008228304!5m2!1sit!2sit" 
+        allowfullscreen="" loading="lazy">
+    </iframe>
+</p>
+
+<footer th:replace="fragments/base.html :: fondo"></footer>
+
 </body>
+
 </html>

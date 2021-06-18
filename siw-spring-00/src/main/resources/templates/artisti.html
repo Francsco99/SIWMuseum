@@ -9,33 +9,19 @@
 	Artisti
 </header>
 
+<nav th:replace="fragments/base.html :: barra"></nav>
+
 <body>
 	<div class="container">
 		<div class="gallery" th:each="artista : ${artisti}">
 			<a th:href="@{'/artista' + '/' + ${artista.id}}">
-			<img th:src="${artista.immagine}">
+				<img th:src="${artista.immagine}">
 			</a>
 			<div class="desc" th:text="|${artista.nome} ${artista.cognome}|"></div>
 		</div>
 	</div>
 </body>
 
-<footer th:replace="fragments/base.html :: fondo"></footer>
+<footer th:include="fragments/base.html :: fondo"></footer>
 
 </html>
-
-
-<!--<div class="container">
-	<ul class="lista">
-		<li th:each="artista : ${artisti}">
-			<div class="flex-item">
-			<a th:href="@{'/artista' + '/' + ${artista.id}}">
-					<img th:src="${artista.immagine}" 
-					th:alt="|${artista.nome} ${artista.cognome}|"
-					height="300">
-				</a>
-				<div class="desc" th:text="|${artista.nome} ${artista.cognome}|"></div>
-			</div>
-		</li>
-	</ul>
-</div>-->

@@ -1,0 +1,16 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+header{
+  text-align: center;
+  font-family: 'Girassol', cursive;
+  font-size: 50px;
+}
+
+iframe{
+  width: 80%;
+  height: 900px;
+  border: 2px solid #fff;
+}
+

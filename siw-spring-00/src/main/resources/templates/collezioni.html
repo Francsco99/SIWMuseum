@@ -5,27 +5,19 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
+<header>Collezioni</header>
+
+<nav th:replace="fragments/base.html :: barra"></nav>
 <body>
-	<header>
-		Collezioni
-	</header>
+	<div class="container">
+		<div class="gallery" th:each="collezione : ${collezioni}">
+			<a th:href="@{'/collezione' + '/' + ${collezione.id}}">
+				<img th:src="${collezione.immagine}">
+			</a>
+			<div class="desc" th:text="${collezione.nome}"></div>
+		</div>
+	</div>
 </body>
-
-<section id="flex-container">
-	<ul id="lista">
-		<li class="elemento" th:each="collezione : ${collezioni}">
-			<div class="flex-item">
-				<a th:href="@{'/collezione' + '/' + ${collezione.id}}">
-					<img th:src="${collezione.immagine}" 
-					th:alt="${collezione.nome}"
-					height="300">
-				</a>
-				<div class="desc" th:text="${collezione.nome}">
-				</div>
-			</div>
-		</li>
-	</ul>
-</section>
-
 <footer th:replace="fragments/base.html :: fondo"></footer>
+
 </html>
