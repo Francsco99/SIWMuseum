@@ -45,21 +45,21 @@
 </section>
 
 <h2>Opere:</h2>
-<div id="flex-container-2">
-	<ul id="lista">
-		<li class="elemento" th:each="opera : ${opere}">
-			<div class="flex-item-2">
+<div>
+	<a th:href="@{'/artista' + '/' + ${artista.id} + '/modificaOpere'}">Modifica opere</a>
+</div>
+
+<div class="flex-container-2">
+	<ul>
+		<li th:each="opera : ${opere}">
+			<div>
 				<a th:href="@{'/opera' + '/' + ${opera.id}}">
-					<img th:src="${opera.immagine}"
-					width="600">
-					<div th:text="${opera.titolo}"></div>
+					<img class="immagine" th:src="${opera.immagine}">
 				</a>
 			</div>
 		</li>
 	</ul>
 </div>
-
-<a th:href="@{'/artista' + '/' + ${artista.id} + '/modificaOpere'}">modifica opere</a>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>
 </html>

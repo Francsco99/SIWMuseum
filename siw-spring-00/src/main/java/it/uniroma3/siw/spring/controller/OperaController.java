@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.ArtistaService;
@@ -27,6 +29,8 @@ public class OperaController {
 
 	@Autowired
 	private ArtistaService artistaService;
+	
+	private Opera operaTemp;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -42,7 +46,6 @@ public class OperaController {
 	public String getOpera(@PathVariable("id") Long id, Model model) {
 		Opera opera = this.operaService.operaPerId(id);
 		model.addAttribute("opera", opera);
-		model.addAttribute("artista", opera.getAutore());
 		return "opera.html";
 	}
 
@@ -52,17 +55,32 @@ public class OperaController {
 		return "opere.html";
 	}
 
-	@RequestMapping(value = "/opera", method = RequestMethod.POST)
+	@RequestMapping(value = "/inserisciOpera", method = RequestMethod.POST)
 	public String newOpera(@ModelAttribute("opera") Opera opera,
 			Model model, BindingResult bindingResult) 
 	{
 		this.operaValidator.validate(opera, bindingResult);
 		if (!bindingResult.hasErrors()) {  
 			opera.setTitolo(opera.getTitolo().toLowerCase());    // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
-			this.operaService.inserisci(opera);
-			model.addAttribute("opere", this.operaService.tutti());
-			return "opere.html";
+			logger.debug("passo alla conferma");
+			operaTemp = opera;
+			return "confermaOperaForm.html";
 		}
 		return "operaForm.html";
 	} 
+	
+	@RequestMapping(value = "/confermaOpera", method = RequestMethod.POST)
+	public String confermaArtista(Model model,
+			@RequestParam(value = "action") String comando) {
+		model.addAttribute("opera",operaTemp);
+		if(comando.equals("confirm")) {
+			logger.debug("confermo e salvo dati opera");
+			this.operaService.inserisci(operaTemp);
+			model.addAttribute("opere", this.operaService.tutti());
+			return "opere.html";
+		}
+		else {
+			return "operaForm.html";
+		}
+	}
 }

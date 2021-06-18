@@ -7,19 +7,16 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+	<link th:href="@{/css/base.css}" rel="stylesheet">
 	<title>Museo Villa Bonelli</title>
 </head>
 
-<body>
-	<footer th:fragment="fondo">
-		<div id="foot">
-			<a th:href="@{/}">Home</a>
-			<a th:href="@{/artisti}">Artisti</a>
-			<a th:href="@{/collezioni}">Collezioni</a>
-			<a th:href="@{/curatori}">Curatori</a>
-			<a th:href="@{/opere}">Opere</a>
-		</div>
-	</footer>
-</body>
+<footer th:fragment="fondo">
+	<a th:href="@{/}">Home</a>
+	<a th:href="@{/artisti}">Artisti</a>
+	<a th:href="@{/collezioni}">Collezioni</a>
+	<a th:href="@{/curatori}">Curatori</a>
+	<a th:href="@{/opere}">Opere</a>
+</footer>
 
 </html>

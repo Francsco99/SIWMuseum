@@ -11,35 +11,21 @@
 	</header>
 </body>
 
-<div>
-	<ul id="flex-container">
-		<li class="elemento flex-item" th:each="artista, iterStat : ${artisti}"
-		th:if="${iterStat.index < iterStat.size/2}">
-				<a th:href="@{'/artista' + '/' + ${artista.id}}">
+<div class="container">
+	<ul class="lista">
+		<li th:each="artista : ${artisti}">
+			<div class="flex-item">
+			<a th:href="@{'/artista' + '/' + ${artista.id}}">
 					<img th:src="${artista.immagine}" 
 					th:alt="|${artista.nome} ${artista.cognome}|"
 					height="300">
 				</a>
-				<div class="desc" th:text="|${artista.nome} ${artista.cognome}|">
-			</div>
-		</li>
-	</ul>
-</div>
-
-<div>
-	<ul id="flex-container-2">
-		<li class="elemento flex-item" th:each="artista, iterStat : ${artisti}"
-		th:if="${iterStat.index >= iterStat.size/2}">
-				<a th:href="@{'/artista' + '/' + ${artista.id}}">
-					<img th:src="${artista.immagine}" 
-					th:alt="|${artista.nome} ${artista.cognome}|"
-					height="300">
-				</a>
-				<div class="desc" th:text="|${artista.nome} ${artista.cognome}|">
+				<div class="desc" th:text="|${artista.nome} ${artista.cognome}|"></div>
 			</div>
 		</li>
 	</ul>
 </div>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>
+
 </html>

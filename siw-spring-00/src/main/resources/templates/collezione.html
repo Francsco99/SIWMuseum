@@ -5,7 +5,35 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
-<body>
-
+<body th:if="${collezione}" th:object="${collezione}">
+	<header th:text="*{nome}"></header>
 </body>
+
+<section class="image">
+	<div>
+		<a th:href="${collezione.immagine}">
+			<img th:src="${collezione.immagine}" th:alt="${collezione.nome}">
+		</a>
+	</div>
+</section>
+
+<section class="description">
+	<h2>
+		Descrizione:
+	</h2>
+	<div th:text="${collezione.descrizione}"></div>
+</section>
+
+<section class="description">
+	<h2>
+		Curatore:
+	</h2>
+	<a th:href="@{'/curatore' + '/' + ${collezione.curatore.id}}" 
+	th:text="|${collezione.curatore.nome} ${collezione.curatore.cognome}|">
+
+</a>
+</section>
+
+<footer th:replace="fragments/base.html :: fondo"></footer>
+
 </html>

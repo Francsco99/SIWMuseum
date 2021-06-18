@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.spring.model.Artista;
+import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.spring.service.OperaService;
 import it.uniroma3.siw.spring.validator.ArtistaValidator;
@@ -66,6 +67,21 @@ public class ArtistaController {
 		return "editOpereArtista.html";
 	}
 
+	@RequestMapping(value="/eliminaOpere",method = RequestMethod.GET)
+	public String eliminaOpereArtista( Model model,
+			@RequestParam(value="listaOpere")Opera opera,
+			@RequestParam(value="action")String comando){
+		if(comando.equals("elimina")) {
+			logger.debug("lista opere");
+			model.addAttribute("artisti", this.artistaService.tutti());
+			return "artisti.html";
+		}
+		else {
+			model.addAttribute("artisti", this.artistaService.tutti());
+			return "artisti.html";
+		}
+	}
+
 	/*Si occupa di gestire la richiesta quando viene selezionato
 	 * il link della pagina artisti*/
 	@RequestMapping(value = "/artisti", method = RequestMethod.GET)
@@ -97,6 +113,7 @@ public class ArtistaController {
 		if(comando.equals("confirm")) {
 			artistaTemp.setNome(artistaTemp.getNome().toLowerCase());             // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
 			artistaTemp.setCognome(artistaTemp.getCognome().toLowerCase());       // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
+			logger.debug("confermo e salvo dati artista");
 			this.artistaService.inserisci(artistaTemp);
 			model.addAttribute("artisti", this.artistaService.tutti());
 			return "artisti.html";

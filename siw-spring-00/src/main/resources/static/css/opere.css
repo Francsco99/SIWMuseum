@@ -1,3 +1,7 @@
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
 body{
   text-align: center;
   background-color: #ffd6f4;
@@ -7,8 +11,7 @@ header{
   font-size: 50px;
 }
 
-#flex-container{
-  font-family: 'Open Sans', sans-serif;
+.container{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -21,29 +24,16 @@ header{
   border-radius: 5px;
   width: 500px;
   height: auto;
+  list-style-type: none ;
+  overflow: hidden;
 }
 
-#lista {
+.lista {
   display: flex;
-  flex-direction: row; <-- not needed as this is the default behavior
   flex-wrap: wrap;
   list-style-type: none;
 }
 
 div.flex-item:hover {
   border: 2px solid #777;
-}
-.elemento{
-  list-style-type: none ;
-}
-
-footer{
-  margin: 500px 0 0 0;
-  text-align: center;
-  background-color: #ffbfee;
-  font-family: 'Open Sans', sans-serif;
-}
-
-#foot{
-  word-spacing: 30px;
 }

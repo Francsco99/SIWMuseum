@@ -11,8 +11,8 @@
 
 <section class="image">
 	<div>
-		<a href="opera">
-			<img th:if="${opera}" th:object="${opera}" th:src="${opera.immagine}" th:alt="${opera.titolo}">
+		<a th:href="${opera.immagine}">
+			<img th:src="${opera.immagine}" th:alt="${opera.titolo}">
 		</a>
 	</div>
 </section>
@@ -21,16 +21,17 @@
 	<h2>
 		Descrizione:
 	</h2>
-	<div th:if="${opera}" th:object="${opera}" th:text=*{descrizione}></div>
+	<div th:text="${opera.descrizione}"></div>
 </section>
 
 <section class="description">
 	<h2>
 		Autore:
 	</h2>
-	<div th:text=${artista.nome} th:object="${artista}">
-		<a th:href="@{'/artista' + '/' + ${artista.id}}"></a>
-	</div>
+	<a th:href="@{'/artista' + '/' + ${opera.autore.id}}" 
+	th:text="|${opera.autore.nome} ${opera.autore.cognome}|">
+
+</a>
 </section>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>

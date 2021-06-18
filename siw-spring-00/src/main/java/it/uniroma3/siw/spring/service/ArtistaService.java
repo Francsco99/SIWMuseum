@@ -58,6 +58,11 @@ public class ArtistaService {
 	}
 	
 	@Transactional
+	public List<Artista> artistiPerNomeECognome(String nome, String cognome){
+		return this.artistaRepository.findByNomeAndCognome(nome, cognome);
+	}
+	
+	@Transactional
 	public boolean alreadyExists(Artista artista) {
 		List<Artista> artisti = this.artistaRepository.findByNomeAndCognome(artista.getNome(), artista.getCognome());
 		if (artisti.size() > 0)
