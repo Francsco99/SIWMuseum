@@ -3,6 +3,7 @@ package it.uniroma3.siw.spring.validator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -33,27 +34,18 @@ public class ArtistaValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nazionalita","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "biografia","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "immagine","required");
-		
-		SimpleDateFormat formatter=new SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy");  
-	    
-	    
-		Date dataDiNascita;
-		Date dataDiMorte;
-		
-		
-		try {
-			dataDiNascita = formatter.parse("dataNascita");
-			dataDiMorte = formatter.parse("dataMorte");
-			
-			if(dataDiNascita.after(dataDiMorte)) {
-				logger.debug("non può essere nato dopo essere morto");
-				errors.reject("assurdoNascita");
-			}
-		} 
-		
-		catch (ParseException e) {
-			System.out.println("parsing failed");
-		}		
+
+		Artista a = (Artista)target;
+		//SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");  
+
+		//LocalDate dataDiNascita;
+		//LocalDate dataDiMorte;
+
+		if(a.getDataNascita().isAfter(a.getDataMorte())) {
+			logger.debug("non può essere nato dopo essere morto");
+			errors.reject("assurdoNascita");
+
+		}
 
 		if(!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
@@ -61,10 +53,11 @@ public class ArtistaValidator implements Validator {
 				logger.debug("e' un duplicato");
 				errors.reject("duplicato");
 			}
-			
-				
 		}
+
+
 	}
+
 
 	@Override
 	public boolean supports(Class<?> clazz) {

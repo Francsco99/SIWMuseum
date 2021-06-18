@@ -5,13 +5,27 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
+<header>
+	Artisti
+</header>
+
 <body>
-	<header>
-		Artisti
-	</header>
+	<div class="container">
+		<div class="gallery" th:each="artista : ${artisti}">
+			<a th:href="@{'/artista' + '/' + ${artista.id}}">
+			<img th:src="${artista.immagine}">
+			</a>
+			<div class="desc" th:text="|${artista.nome} ${artista.cognome}|"></div>
+		</div>
+	</div>
 </body>
 
-<div class="container">
+<footer th:replace="fragments/base.html :: fondo"></footer>
+
+</html>
+
+
+<!--<div class="container">
 	<ul class="lista">
 		<li th:each="artista : ${artisti}">
 			<div class="flex-item">
@@ -24,8 +38,4 @@
 			</div>
 		</li>
 	</ul>
-</div>
-
-<footer th:replace="fragments/base.html :: fondo"></footer>
-
-</html>
+</div>-->

@@ -70,6 +70,7 @@ nav form{
   border: 2px solid black;
   border-radius: 5px;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .immagine{

@@ -10,13 +10,5 @@ header{
 
 body{
   background-color: #c5e5fa;
-}
-
-footer{
-  text-align: center;
-  background-color: #a2d7fa;
-}
-
-#foot{
-  word-spacing: 30px;
+    text-transform: capitalize;
 }
