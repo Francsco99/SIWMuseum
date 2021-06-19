@@ -27,7 +27,7 @@ public class OperaController {
 
 	@Autowired
 	private ArtistaService artistaService;
-	
+
 	private Opera operaTemp;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -53,20 +53,37 @@ public class OperaController {
 		return "opere.html";
 	}
 
+	@RequestMapping(value="/cancellaOpera", method = RequestMethod.GET)
+	public String cancellaOpera(Model model) {
+		model.addAttribute("opere", this.operaService.tutti());
+		return "cancellaOpere.html";
+	}
+
+	@RequestMapping(value="/cancellaOpera/{id}", method = RequestMethod.GET)
+	public String ConfermaCancellaOpera(@PathVariable("id") Long id,Model model) {
+		logger.debug(id.toString());
+		this.operaService.cancellaOpera(id);
+		logger.debug("CANCELLATA OPERA CON ID: "+id.toString());
+		model.addAttribute("opere", this.operaService.tutti());
+		return "opere.html";
+	}
+
+
 	@RequestMapping(value = "/inserisciOpera", method = RequestMethod.POST)
 	public String newOpera(@ModelAttribute("opera") Opera opera,
 			Model model, BindingResult bindingResult) 
 	{
 		this.operaValidator.validate(opera, bindingResult);
 		if (!bindingResult.hasErrors()) {  
-			opera.setTitolo(opera.getTitolo().toLowerCase());    // PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca 
+			/*PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca*/
+			opera.setTitolo(opera.getTitolo().toLowerCase()); 
 			logger.debug("passo alla conferma");
 			operaTemp = opera;
 			return "confermaOperaForm.html";
 		}
 		return "operaForm.html";
 	} 
-	
+
 	@RequestMapping(value = "/confermaOpera", method = RequestMethod.POST)
 	public String confermaArtista(Model model,
 			@RequestParam(value = "action") String comando) {

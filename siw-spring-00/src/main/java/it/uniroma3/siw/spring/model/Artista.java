@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -45,7 +44,7 @@ public class Artista {
 	@Lob
 	private String biografia;
 	
-	@OneToMany(mappedBy = "autore", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "autore", fetch = FetchType.EAGER)
 	private List<Opera> opere;
 	
 	public Artista() {

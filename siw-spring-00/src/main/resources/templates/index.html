@@ -7,10 +7,8 @@
 
 <header>Museo Villa Bonelli</header>
 
-<nav th:replace="fragments/base.html :: barra"></nav>
-
+<nav th:include="fragments/base.html :: barra"></nav>
 <body>
-
   <div class="container">
     <div class="gallery" th:each="opera : ${opere}">
       <a th:href="@{'/opera' + '/' + ${opera.id}}">
@@ -21,7 +19,6 @@
   </div>
 
 </body>
-
 <!--<footer>
   <a href="addArtista"> Aggiungi artista</a>
   <a href="addOpera"> Aggiungi opera</a>
@@ -29,6 +26,6 @@
   <a href="addCuratore"> Aggiungi curatore</a>
 </footer>-->
 
-<footer th:replace="fragments/base.html :: fondo"></footer>
+<footer th:include="fragments/base.html :: fondo"></footer>
 
 </html>

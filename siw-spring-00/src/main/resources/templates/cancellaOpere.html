@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/%22%3E">
+
+<head th:include="fragments/base.html :: testa"></head>
+
+<body>
+	<form th:action="@{/cancellaOpera}" method="GET">
+		<h3>Clicca su un'opera per cancellarla</h3>
+		<ul>
+			<li th:each="opera : ${opere}">
+				<a th:href="@{'/cancellaOpera'+'/' +${opera.id}}" th:name="idOpera" th:text="${opera.titolo}"></a>
+			</li>
+	</form>
+
+</body>
+</html>

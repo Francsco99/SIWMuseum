@@ -5,11 +5,8 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
-
-
+<header>Informazioni</header>
 <body>
-    <header>Informazioni</header>
-
     <nav th:replace="fragments/base.html :: barra"></nav>
 
     <p align="center">
@@ -18,8 +15,9 @@
     </iframe>
 </p>
 
+<a th:href="cancellaOpera">Cancella opere</a>
+</body>
 <footer th:replace="fragments/base.html :: fondo"></footer>
 
-</body>
 
 </html>

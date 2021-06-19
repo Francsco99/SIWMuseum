@@ -15,5 +15,5 @@ public interface OperaRepository extends CrudRepository<Opera,Long> {
 	
 	public List<Opera> findAll();
 	
-	public void delete(Opera opera);
+	public void deleteById(Long id);
 }

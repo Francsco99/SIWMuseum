@@ -43,8 +43,8 @@ public class OperaService {
 	}
 	
 	@Transactional
-	public void cancellaOpera(Opera opera) {
-		this.operaRepository.delete(opera);
+	public void cancellaOpera(Long id) {
+		this.operaRepository.deleteById(id);
 	}
 	
 	@Transactional
