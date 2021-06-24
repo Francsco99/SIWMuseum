@@ -11,15 +11,13 @@
 	<title>Museo Villa Bonelli</title>
 </head>
 
-
-
 <nav th:fragment="barra">
 	<a class="active" th:href="@{/}">Home</a>
-	<a href="artisti">Artisti</a>
-	<a href="collezioni">Collezioni</a>
-	<a href="opere">Opere</a>
-	<a href="curatori">Curatori</a>
-	<a href="informazioni">Informazioni</a>
+	<a th:href="@{/artisti}">Artisti</a>
+	<a th:href="@{/collezioni}">Collezioni</a>
+	<a th:href="@{/opere}">Opere</a>
+	<a th:href="@{/curatori}">Curatori</a>
+	<a th:href="@{/informazioni}">Informazioni</a>
 
 	<form th:action="@{/ricerca}" method="GET">
 		<span>Cerca nel museo</span>
