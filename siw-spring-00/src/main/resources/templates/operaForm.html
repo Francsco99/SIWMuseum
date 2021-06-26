@@ -10,7 +10,7 @@
     <h4>Inserisci i dati di un' opera</h4>
   </div>
 
-  <form th:action="@{/inserisciOpera}" method="POST" th:object="${opera}">
+  <form th:action="@{/admin/inserisciOpera}" method="POST" th:object="${opera}">
     <div th:if="${#fields.hasGlobalErrors()}">
       <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
     </div>

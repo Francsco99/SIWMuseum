@@ -32,14 +32,6 @@ public class OperaController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@RequestMapping(value="/addOpera", method = RequestMethod.GET)
-	public String addOpera(Model model) {
-		logger.debug("addOpera");
-		model.addAttribute("opera", new Opera());
-		model.addAttribute("artisti",this.artistaService.tutti());
-		return "operaForm.html";
-	}
-
 	@RequestMapping(value = "/opera/{id}", method = RequestMethod.GET)
 	public String getOpera(@PathVariable("id") Long id, Model model) {
 		Opera opera = this.operaService.operaPerId(id);
@@ -53,13 +45,13 @@ public class OperaController {
 		return "opere.html";
 	}
 
-	@RequestMapping(value="/cancellaOpera", method = RequestMethod.GET)
+	@RequestMapping(value="/admin/cancellaOpera", method = RequestMethod.GET)
 	public String cancellaOpera(Model model) {
 		model.addAttribute("opere", this.operaService.tutti());
 		return "cancellaOpere.html";
 	}
 
-	@RequestMapping(value="/cancellaOpera/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/admin/cancellaOpera/{id}", method = RequestMethod.GET)
 	public String ConfermaCancellaOpera(@PathVariable("id") Long id,Model model) {
 		logger.debug(id.toString());
 		this.operaService.cancellaOpera(id);
@@ -68,8 +60,15 @@ public class OperaController {
 		return "opere.html";
 	}
 
+	@RequestMapping(value="/admin/addOpera", method = RequestMethod.GET)
+	public String addOpera(Model model) {
+		logger.debug("addOpera");
+		model.addAttribute("opera", new Opera());
+		model.addAttribute("artisti",this.artistaService.tutti());
+		return "operaForm.html";
+	}
 
-	@RequestMapping(value = "/inserisciOpera", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/inserisciOpera", method = RequestMethod.POST)
 	public String newOpera(@ModelAttribute("opera") Opera opera,
 			Model model, BindingResult bindingResult) 
 	{
@@ -84,7 +83,7 @@ public class OperaController {
 		return "operaForm.html";
 	} 
 
-	@RequestMapping(value = "/confermaOpera", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/confermaOpera", method = RequestMethod.POST)
 	public String confermaArtista(Model model,
 			@RequestParam(value = "action") String comando) {
 		model.addAttribute("opera",operaTemp);

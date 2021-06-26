@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/index.css}" rel="stylesheet">
+
+<head th:include="fragments/base.html :: testa"></head>
+
+<header>Museo Villa Bonelli</header>
+
+<nav th:include="fragments/base.html :: barraLoggato"></nav>
+<body>
+  <div class="container">
+    <div class="gallery" th:each="opera : ${opere}">
+      <a th:href="@{'/opera' + '/' + ${opera.id}}">
+        <img th:src="${opera.immagine}">
+      </a>
+      <div class="desc" th:text="${opera.titolo}"></div>
+    </div>
+  </div>
+
+</body>
+
+<footer th:replace="fragments/base.html :: fondo"></footer>
+
+</html>

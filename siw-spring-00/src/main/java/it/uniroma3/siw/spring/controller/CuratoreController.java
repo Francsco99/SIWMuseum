@@ -30,13 +30,7 @@ public class CuratoreController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@RequestMapping(value="/addCuratore", method = RequestMethod.GET)
-	public String addCuratore(Model model) {
-		logger.debug("addCuratore");
-		model.addAttribute("curatore", new Curatore());
-		model.addAttribute("collezioni", this.collezioneService.tutti());
-		return "curatoreForm.html";
-	}
+	
 
 	@RequestMapping(value = "/curatore/{id}", method = RequestMethod.GET)
 	public String getCuratore(@PathVariable("id") Long id, Model model) {
@@ -53,8 +47,16 @@ public class CuratoreController {
 		model.addAttribute("curatori", this.curatoreService.tutti());
 		return "curatori.html";
 	}
+	
+	@RequestMapping(value="/admin/addCuratore", method = RequestMethod.GET)
+	public String addCuratore(Model model) {
+		logger.debug("addCuratore");
+		model.addAttribute("curatore", new Curatore());
+		model.addAttribute("collezioni", this.collezioneService.tutti());
+		return "curatoreForm.html";
+	}
 
-	@RequestMapping(value = "/curatore", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/inserisciCuratore", method = RequestMethod.POST)
 	public String newCuratore(@ModelAttribute("curatore") Curatore curatore, 
 			Model model, BindingResult bindingResult) {
 		this.curatoreValidator.validate(curatore, bindingResult);

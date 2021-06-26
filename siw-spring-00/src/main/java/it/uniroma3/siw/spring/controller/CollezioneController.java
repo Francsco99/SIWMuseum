@@ -29,15 +29,6 @@ public class CollezioneController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	/*Popola la form*/
-	@RequestMapping(value="/addCollezione", method = RequestMethod.GET)
-	public String addCollezione(Model model) {
-		logger.debug("addCollezione");
-		model.addAttribute("collezione", new Collezione());
-		model.addAttribute("curatori",this.curatoreService.tutti());
-		return "collezioneForm.html";
-		
-	}
 	
 	/*Si occupa di gestire la richiesta quando viene selezionata
 	 * una collezione dalla pagina delle varie collezioni*/
@@ -56,8 +47,18 @@ public class CollezioneController {
 		return "collezioni.html";
 	}
 	
+	/*Popola la form*/
+	@RequestMapping(value="/admin/addCollezione", method = RequestMethod.GET)
+	public String addCollezione(Model model) {
+		logger.debug("addCollezione");
+		model.addAttribute("collezione", new Collezione());
+		model.addAttribute("curatori",this.curatoreService.tutti());
+		return "collezioneForm.html";
+		
+	}
+	
 	/*raccoglie e valida i dati della form*/
-	@RequestMapping(value = "/collezione", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/inserisciCollezione", method = RequestMethod.POST)
 	public String newCollezione(@ModelAttribute("collezione") Collezione collezione,
 			Model model, BindingResult bindingResult) {
 		this.collezioneValidator.validate(collezione, bindingResult);

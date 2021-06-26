@@ -11,7 +11,7 @@
     <h4>Inserisci i dati di una collezione</h4>
   </div>
 
-  <form th:action="@{/collezione}" method="POST" th:object="${collezione}">
+  <form th:action="@{/admin/inserisciCollezione}" method="POST" th:object="${collezione}">
     <div th:if="${#fields.hasGlobalErrors()}">
       <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
     </div>

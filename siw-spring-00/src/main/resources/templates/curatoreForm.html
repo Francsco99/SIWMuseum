@@ -11,7 +11,7 @@
     <h4>Inserisci i dati di un curatore</h4>
   </div>
 
-  <form th:action="@{/curatore}" method="POST" th:object="${curatore}">
+  <form th:action="@{/admin/inserisciCuratore}" method="POST" th:object="${curatore}">
     <div th:if="${#fields.hasGlobalErrors()}">
       <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
     </div>

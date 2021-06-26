@@ -42,15 +42,6 @@ public class ArtistaController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	/*Popola la form*/
-	@RequestMapping(value="/addArtista", method = RequestMethod.GET)
-	public String addArtista(Model model) {
-		logger.debug("PASSO ALLA FORM addArtista");
-		model.addAttribute("artista", new Artista());
-		model.addAttribute("dataOggi", dataOggi);
-		return "artistaForm.html";
-	}
-
 	/*Si occupa di gestire la richiesta quando viene selezionato
 	 * un artista dalla pagina dei vari artisti*/
 	@RequestMapping(value = "/artista/{id}", method = RequestMethod.GET)
@@ -63,18 +54,6 @@ public class ArtistaController {
 		return "artista.html";
 	}
 
-	/*Si occupa della richiesta quando viene selezionato
-	 * il link per modificare le opere di un artista dentro
-	 * la pagina dell'artista*/
-	@RequestMapping(value = "artista/{id}/modificaOpere", method = RequestMethod.GET)
-	public String editOpereArtista(@PathVariable("id") Long id, Model model) {
-		Artista artista = this.artistaService.artistaPerId(id);
-		model.addAttribute("artista",artista);
-		model.addAttribute("opereArtista",this.operaService.operePerArtista(artista));
-		model.addAttribute("TutteOpere",this.operaService.tutti());
-		return "editOpereArtista.html";
-	}
-
 	/*Si occupa di gestire la richiesta quando viene selezionato
 	 * il link della pagina artisti*/
 	@RequestMapping(value = "/artisti", method = RequestMethod.GET)
@@ -82,9 +61,19 @@ public class ArtistaController {
 		model.addAttribute("artisti", this.artistaService.tutti());
 		return "artisti.html";
 	}
+	
+	/*Popola la form*/
+	@RequestMapping(value="/admin/addArtista", method = RequestMethod.GET)
+	public String addArtista(Model model) {
+		logger.debug("PASSO ALLA FORM addArtista");
+		model.addAttribute("artista", new Artista());
+		model.addAttribute("dataOggi", dataOggi);
+		return "artistaForm.html";
+	}
+
 
 	/*raccoglie e valida i dati della form*/
-	@RequestMapping(value = "/inserisciArtista", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/inserisciArtista", method = RequestMethod.POST)
 	public String newArtista(@ModelAttribute("artista") Artista artista, 
 			Model model, BindingResult bindingResult) {
 		this.artistaValidator.validate(artista, bindingResult);
@@ -97,7 +86,7 @@ public class ArtistaController {
 	} 
 
 	/*conferma l'inserimento dei dati nel db*/
-	@RequestMapping(value = "/confermaArtista", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/confermaArtista", method = RequestMethod.POST)
 	public String confermaArtista(Model model,
 			@RequestParam(value = "action") String comando) {
 
