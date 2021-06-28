@@ -5,6 +5,8 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
+<nav th:replace="fragments/base.html :: barraLoggato"></nav>
+
 <body th:if="${opera}" th:object="${opera}">
 	<header th:text="*{titolo}"></header>
 </body>
@@ -32,6 +34,13 @@
 	th:text="|${opera.autore.nome} ${opera.autore.cognome}|">
 
 </a>
+</section>
+
+<section class="description">
+	<h2>Collezione</h2>
+
+	<a th:if="${collezione ==null}" th:href="@{/admin/addCollezione}">aggiungi collezione</a>
+	<a th:unless="${collezione ==null}" th:href="@{/default}">modifica collezione</a>
 </section>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>

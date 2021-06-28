@@ -3,6 +3,8 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
+<nav th:replace="fragments/base.html :: barraLoggato"></nav>
+
 <body>
 	<form th:action="@{/admin/cancellaOpera}" method="POST">
 		<h3>Clicca su un'opera per cancellarla</h3>

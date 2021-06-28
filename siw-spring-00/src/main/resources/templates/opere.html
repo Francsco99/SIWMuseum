@@ -5,9 +5,9 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
-<header>Opere</header>
+<nav th:replace="fragments/base.html :: barraLoggato"></nav>
 
-	<nav th:replace="fragments/base.html :: barra"></nav>
+<header>Opere</header>
 
 <body>
 	<div class="container">
@@ -15,7 +15,15 @@
 			<a th:href="@{'/opera' + '/' + ${opera.id}}">
 				<img th:src="${opera.immagine}">
 			</a>
-			<div class="desc" th:text="${opera.titolo}"></div>
+			<div>
+				<span class="desc" th:text="${opera.titolo}"></span>
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a th:href="@{'/admin/modificaOpera'+'/' +${opera.id}}">Modifica opera</a>
+				</span>
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a th:href="@{'/admin/cancellaOpera'+'/' +${opera.id}}">Cancella opera</a>
+				</span>
+			</div>
 		</div>
 	</div>
 </body>

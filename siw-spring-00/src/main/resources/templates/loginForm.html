@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: testa"> </head>
+<link th:href="@{/css/index.css}" rel="stylesheet">
+<head th:include="fragments/base.html :: testa">
+</head>
+
+<header>Museo Villa Bonelli</header>
+
+<nav th:replace="fragments/base.html :: barra"></nav>
+
 <body>
 	<div>
 		<h4>Login</h4>
@@ -20,6 +27,6 @@
 			</div>
 		</div>
 	</form>
-    <footer th:replace="fragments/base.html :: fondo"></footer>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

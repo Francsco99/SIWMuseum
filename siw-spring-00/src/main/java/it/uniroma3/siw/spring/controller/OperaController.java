@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import it.uniroma3.siw.spring.model.Artista;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.spring.service.OperaService;
@@ -36,8 +40,21 @@ public class OperaController {
 	public String getOpera(@PathVariable("id") Long id, Model model) {
 		Opera opera = this.operaService.operaPerId(id);
 		model.addAttribute("opera", opera);
+		model.addAttribute("collezione", opera.getCollezione());
 		return "opera.html";
 	}
+	
+	
+	@RequestMapping(value = "/admin/modificaOpera/{id}", method = RequestMethod.GET)
+	public String editOpera(@PathVariable("id") Long id, Model model) {
+		Opera opera = this.operaService.operaPerId(id);
+		//Artista ascemo = opera.getAutore();
+		model.addAttribute("opera", opera);
+		//model.addAttribute("idAutore", ascemo.getId());
+		return "editOpera.html";
+	}
+	
+	
 
 	@RequestMapping(value = "/opere", method = RequestMethod.GET)
 	public String getOpere(Model model) {

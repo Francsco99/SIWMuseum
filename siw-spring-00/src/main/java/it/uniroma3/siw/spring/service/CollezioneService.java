@@ -55,4 +55,9 @@ public class CollezioneService {
 		else 
 			return false;
 	}
+	
+	@Transactional
+	public void cancella(Long id) {
+		this.collezioneRepository.deleteById(id);
+	}
 }

@@ -5,6 +5,7 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
+<nav th:replace="fragments/base.html :: barraLoggato"></nav>
 
 <body>
 	<div>
@@ -37,10 +38,10 @@
 		</div>
 	</div>
 
-	<div>
+	<!--<div>
 		<span>Autore:</span>
 		<span th:text="|${opera.autore.nome} ${opera.autore.cognome}|"></span>
-	</div> 
+	</div> -->
 
 	<section>
 		<button th:type="submit" th:name="action" th:value="confirm">Conferma</button>

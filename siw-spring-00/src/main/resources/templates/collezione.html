@@ -5,6 +5,8 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
+<nav th:replace="fragments/base.html :: barraLoggato"></nav>
+
 <body th:if="${collezione}" th:object="${collezione}">
 	<header th:text="*{nome}"></header>
 </body>

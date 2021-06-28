@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: testa"> </head>
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+<head th:include="fragments/base.html :: testa"> 
+</head>
+
+<header>Museo Villa Bonelli</header>
+
+<nav th:replace="fragments/base.html :: barra"></nav>
+
 <body>
 	<div>
-    	<h4 th:text="#{header.registra}">Registrazione</h4>
+		<h4 th:text="#{header.registra}">Registrazione</h4>
 		<h1>Congratulazioni ti sei registrato!</h1>
 	</div>
-    <footer th:replace="fragments/base.html :: fondo"></footer>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

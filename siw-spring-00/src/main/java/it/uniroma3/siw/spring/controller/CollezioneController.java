@@ -68,5 +68,14 @@ public class CollezioneController {
 			return "collezioni.html";
 		}
 		return "collezioneForm.html";
-	} 
+	}
+	
+	@RequestMapping(value="/admin/cancellaCollezione/{id}", method = RequestMethod.GET)
+	public String cancellaCollezione(@PathVariable("id") Long id,Model model) {
+		logger.debug(id.toString());
+		this.collezioneService.cancella(id);
+		logger.debug("CANCELLATA COLLEZIONE CON ID: "+id.toString());
+		model.addAttribute("collezioni", this.collezioneService.tutti());
+		return "collezioni.html";
+	}
 }

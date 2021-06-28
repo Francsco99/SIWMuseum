@@ -7,14 +7,25 @@
 
 <header>Collezioni</header>
 
-<nav th:replace="fragments/base.html :: barra"></nav>
+<nav th:replace="fragments/base.html :: barraLoggato"></nav>
+
 <body>
 	<div class="container">
 		<div class="gallery" th:each="collezione : ${collezioni}">
 			<a th:href="@{'/collezione' + '/' + ${collezione.id}}">
 				<img th:src="${collezione.immagine}">
 			</a>
-			<div class="desc" th:text="${collezione.nome}"></div>
+			<div>
+				<span class="desc" th:text="${collezione.nome}"></span>
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a th:href="@{'/admin/cancellaCollezione'+'/' +${collezione.id}}">Cancella collezione</a>
+				</span>
+
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a th:href="@{'/admin/editCollezione'+'/' +${collezione.id}}">Modifica collezione</a>
+				</span>
+
+			</div>
 		</div>
 	</div>
 </body>

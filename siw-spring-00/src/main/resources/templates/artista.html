@@ -5,6 +5,8 @@
 
 <head th:include="fragments/base.html :: testa"></head>
 
+<nav th:replace="fragments/base.html :: barraLoggato"></nav>
+
 <body th:if="${artista}" th:object="${artista}">
 	<header th:text="|*{nome} *{cognome}|"></header>
 </body>

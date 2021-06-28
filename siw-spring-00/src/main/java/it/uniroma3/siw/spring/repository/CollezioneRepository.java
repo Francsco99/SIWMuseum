@@ -13,5 +13,7 @@ public interface CollezioneRepository extends CrudRepository<Collezione,Long> {
 	public List<Collezione> findAll();
 	
 	public List<Collezione> findByCuratore(Curatore curatore);
+	
+	public void deleteById(Long id);
 
 }
