@@ -97,6 +97,7 @@ public class OperaController {
 			operaTemp = opera;
 			return "confermaOperaForm.html";
 		}
+		model.addAttribute("artisti", this.artistaService.tutti());
 		return "operaForm.html";
 	} 
 
@@ -111,6 +112,7 @@ public class OperaController {
 			return "opere.html";
 		}
 		else {
+			model.addAttribute("artisti", this.artistaService.tutti());
 			return "operaForm.html";
 		}
 	}

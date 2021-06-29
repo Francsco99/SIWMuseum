@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/artistaForm.css}" rel="stylesheet">
+
+<head th:include="fragments/base.html :: testa"></head>
+
+<body>
+  <div>
+    <h4>Inserisci i dati di un artista</h4>
+  </div>
+
+  <form th:action="@{'/modificaArtista'+'/'+${artista.id}}" method="POST" th:object="${artista}"> 
+
+    <div>
+      <div>
+        <span>Nome:</span>
+        <span><input th:value="*{nome}" type="text" th:field="*{nome}" /></span>
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+      </div> 
+
+      <div>
+        <span>Biografia:</span>
+        <span><input type="text" th:field="*{biografia}" th:value="*{biografia}" /></span>
+        <span th:if="${#fields.hasErrors('biografia')}" th:errors="*{biografia}"></span>
+      </div>
+
+    <div>
+      <span><button type="submit">Invio</button></span>
+    </div>
+  </form>
+</body>
+</html>

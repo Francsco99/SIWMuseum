@@ -3,11 +3,12 @@
 
 <link th:href="@{/css/opere.css}" rel="stylesheet">
 
-<head th:include="fragments/base.html :: testa"></head>
+<header>Opere</header>
+
+<head th:replace="fragments/base.html :: testa"></head>
 
 <nav th:replace="fragments/base.html :: barraLoggato"></nav>
 
-<header>Opere</header>
 
 <body>
 	<div class="container">
@@ -26,7 +27,6 @@
 			</div>
 		</div>
 	</div>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
-
-<footer th:replace="fragments/base.html :: fondo"></footer>
 </html>

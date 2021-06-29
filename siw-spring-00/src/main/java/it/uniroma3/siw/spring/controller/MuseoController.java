@@ -80,7 +80,7 @@ public class MuseoController {
 
 			logger.debug("Sto cercando corrispondenze con: "+ parola);
 
-			for(Artista a : this.artistaService.artistiPerNomeOCognome(parola, parola)) {
+			for(Artista a : this.artistaService.artistaNomeOCognome(parola)) {
 				artisti.add(a);
 			}
 

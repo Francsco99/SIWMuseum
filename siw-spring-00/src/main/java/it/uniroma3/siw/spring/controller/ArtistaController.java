@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,7 @@ public class ArtistaController {
 
 	/*variabile temporanea da usare durante la validazione della form*/
 	private Artista artistaTemp;
-	
+
 	/*Data di oggi*/
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataOggi= LocalDate.now();
@@ -61,7 +62,7 @@ public class ArtistaController {
 		model.addAttribute("artisti", this.artistaService.tutti());
 		return "artisti.html";
 	}
-	
+
 	/*Popola la form*/
 	@RequestMapping(value="/admin/addArtista", method = RequestMethod.GET)
 	public String addArtista(Model model) {
@@ -98,7 +99,7 @@ public class ArtistaController {
 			artistaTemp.setCognome(artistaTemp.getCognome().toLowerCase());				 
 			artistaTemp.setLuogoNascita(artistaTemp.getLuogoNascita().toLowerCase());   
 			artistaTemp.setLuogoNascita(artistaTemp.getLuogoMorte().toLowerCase());
-			
+
 			logger.debug("CONFERMO e SALVO dati artista");
 			logger.debug("DATA NASCITA: "+ artistaTemp.getDataNascita());
 			this.artistaService.inserisci(artistaTemp);
@@ -109,20 +110,22 @@ public class ArtistaController {
 			return "artistaForm.html";
 		}
 	}
-	
-	@RequestMapping(value="/eliminaOpere",method = RequestMethod.GET)
-	public String eliminaOpereArtista( Model model,
-			@RequestParam(value="listaOpere")Opera opera,
-			@RequestParam(value="action")String comando){
-		if(comando.equals("elimina")) {
-			logger.debug("lista opere");
-			model.addAttribute("artisti", this.artistaService.tutti());
-			return "artisti.html";
-		}
-		else {
-			model.addAttribute("artisti", this.artistaService.tutti());
-			return "artisti.html";
-		}
+
+	@RequestMapping(value="/modificaArtista/{id}", method = RequestMethod.GET)
+	public String editArtista(Model model, @PathVariable("id")Long id) {
+		Artista artista = this.artistaService.artistaPerId(id);
+		model.addAttribute("artista", artista);
+		return "editArtista.html";
 	}
+
+	@RequestMapping(value="/modificaArtista/{id}",method = RequestMethod.POST)
+	public String confermaModifica(@PathVariable("id") Long id,@Validated @ModelAttribute("artista") Artista artista,
+			Model model) {
+		artistaService.update(artista, id);
+		
+		model.addAttribute("artisti", this.artistaService.tutti());
+		return "artisti.html";
+	} 
+
 
 }

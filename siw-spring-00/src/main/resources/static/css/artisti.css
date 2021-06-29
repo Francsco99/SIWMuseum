@@ -22,7 +22,7 @@ header{
   max-width: 1250px;
   margin: auto;
   background: #f2f2f2;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .gallery{
@@ -36,7 +36,6 @@ header{
 .gallery img{
 object-fit: cover;
  width: 100%;
- height: 80%;
 }
 
 .desc{

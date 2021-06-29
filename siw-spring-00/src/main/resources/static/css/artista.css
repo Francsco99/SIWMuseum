@@ -36,11 +36,7 @@ header{
 
 .flex-container-2 {
   width: auto;
-  display: inline-block;
-}
 
-ul {
-  list-style-type: none;
 }
 
 .immagine{
@@ -49,9 +45,6 @@ ul {
   object-fit: cover;
 }
 
-.flex-container-2  li{
-  margin: 10px 0;
-}
 
 .flex-container-2  div{
   width: auto;
@@ -60,4 +53,9 @@ ul {
   border-width: 2px;
   border-radius: 5px;
   padding: 5px;
+    display: inline-grid;
+  float: left;
+  margin-right: 10px;
+  margin-left: 10px;
+
 }

@@ -60,4 +60,14 @@ public class OperaService {
 		else 
 			return false;
 	}
+	
+	@Transactional
+	public List<Opera> tutteTitoloAlfabetico(){
+		return this.operaRepository.findByOrderByTitolo();
+	}
+	
+	@Transactional
+	public List<Opera> tutteDataCrescente(){
+		return this.operaRepository.findByOrderByDataRealizzazione();
+	}
 }

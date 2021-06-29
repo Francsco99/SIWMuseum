@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<link th:href="@{/css/index.css}" rel="stylesheet">
-<head th:include="fragments/base.html :: testa">
+<link th:href="@{/css/base.css}" rel="stylesheet">
+<head th:replace="fragments/base.html :: testa">
 </head>
 
 <header>Museo Villa Bonelli</header>
@@ -9,11 +9,11 @@
 <nav th:replace="fragments/base.html :: barra"></nav>
 
 <body>
-	<div>
-		<h4>Login</h4>
-	</div>
 	<form th:action="@{/login}" method="POST">
-		<div>
+
+		<div class="login-container">
+			<div><h2>Login</h2></div>
+			
 			<div>
 				<span>Username:</span>
 				<span><input name="username" type="text" required /></span>

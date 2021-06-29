@@ -16,4 +16,8 @@ public interface OperaRepository extends CrudRepository<Opera,Long> {
 	public List<Opera> findAll();
 	
 	public void deleteById(Long id);
+	
+	public List<Opera> findByOrderByTitolo();
+	
+	public List<Opera> findByOrderByDataRealizzazione();
 }

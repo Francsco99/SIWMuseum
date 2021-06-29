@@ -27,8 +27,7 @@ public class Opera {
 	@JoinColumn(name="collezione_id")
 	private Collezione collezione;
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name="autore_id",nullable = false)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Artista autore;
 	
 	public Opera() {

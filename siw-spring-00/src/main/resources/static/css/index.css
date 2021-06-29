@@ -2,6 +2,15 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.login-container{
+  display: flex;
+  text-align: center;
+  text-transform: capitalize;
+  align-content: center;
+  flex-direction: column;
+}
+
+
 html {
   position: relative;
   min-height: 100%;
@@ -46,21 +55,4 @@ body{
   font-size: 20px;
   text-transform: capitalize;
 } 
-
-/*footer{
-  margin: 200px 0 0 0;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  background-color: #252625;
-  height: 60px;
-  width: 100%;
-  color: white;
-  padding: 20px 0 0 0;
-}
-
-footer a{
-  color: #ffffff;
-  }*/
-
 

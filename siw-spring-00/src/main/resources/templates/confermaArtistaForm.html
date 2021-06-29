@@ -1,68 +1,61 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<link th:href="@{/css/artistaForm.css}" rel="stylesheet">
+<link th:href="@{/css/artista.css}" rel="stylesheet">
 
-<head th:include="fragments/base.html :: testa"></head>
+<head th:replace="fragments/base.html :: testa"></head>
 
 <nav th:replace="fragments/base.html :: barraLoggato"></nav>
 
 <body>
-	<div>
-		<h4>
-			Ecco i dati che hai inserito:
-		</h4>
-	</div>
+	<h2>Ecco i dati che hai inserito:</h2>
 
 	<form th:action="@{/admin/confermaArtista}" method="POST" th:object="${artista}">
 
-		<div th:if="${artista}" th:object="${artista}">
-		<div>
-			<span class="descrittori">Nome: </span>
-			<span th:text="*{nome}"></span>
-		</div> 
+		<section id="flex-container-1">
+			<div class="flex-item" th:if="${artista}" th:object="${artista}">
+				<div>
+					<span class="descrittori">Nome e cognome: </span>
+					<span th:text="|*{nome} *{cognome}|"></span>
+				</div>
+				<div>
+					<span class="descrittori">Data di nascita: </span>
+					<span th:text="*{dataNascita}"></span>
+				</div> 
+				<div>
+					<span class="descrittori">Data di morte: </span>
+					<span th:text="*{dataMorte}"></span>
+				</div> 
+				<div>
+					<span class="descrittori">Luogo di nascita: </span>
+					<span th:text="*{luogoNascita}"></span>
+				</div> 
+				<div>
+					<span class="descrittori">Luogo di morte: </span>
+					<span th:text="*{luogoMorte}"></span>
+				</div> 
+				<div>
+					<span class="descrittori">Nazionalità: </span>
+					<span th:text="*{nazionalita}"></span>
+				</div> 
+			</div>
+			<a class="flex-item-1" th:href="${artista.immagine}">
+				<img th:src="${artista.immagine}"
+				th:alt="|${artista.nome} ${artista.cognome}|"
+				height="300">
+			</a>
+		</section>
 
-		<div>
-			<span class="descrittori">Cognome: </span>
-			<span th:text="*{cognome}"></span>
-		</div> 
+		<section id="biografia">
+			<h2>Biografia:</h2>
+			<div th:if="${artista}" th:object="${artista}" class="biografia" th:text="*{biografia}"></div>
+		</section>
 
-		<div>
-			<span class="descrittori">Data di nascita: </span>
-			<span th:text="*{dataNascita}"></span>
-		</div> 
-		<div>
-			<span class="descrittori">Data di morte: </span>
-			<span th:text="*{dataMorte}"></span>
-		</div> 
-		<div>
-			<span class="descrittori">Luogo di nascita: </span>
-			<span th:text="*{luogoNascita}"></span>
-		</div> 
-		<div>
-			<span class="descrittori">Luogo di morte: </span>
-			<span th:text="*{luogoMorte}"></span>
-		</div> 
-		<div>
-			<span class="descrittori">Nazionalità: </span>
-			<span th:text="*{nazionalita}"></span>
-		</div> 
 
-		<div>
-			<span class="descrittori">Biografia: </span>
-			<span th:text="*{biografia}"></span>
-		</div>
-
-		<div>
-			<span class="descrittori">Immagine: </span>
-			<img th:src="*{immagine}" width="500pxq">
-		</div>
-	</div>
-
-	<section>
-		<button th:type="submit" th:name="action" th:value="confirm">Conferma</button>
-		<button th:type="submit" th:name="action" th:value="cancel">Torna indietro</button>
-	</section>
+		<section>
+			<button th:type="submit" th:name="action" th:value="confirm">Conferma</button>
+			<button th:type="submit" th:name="action" th:value="cancel">Torna indietro</button>
+		</section>
 
 	</form>
 

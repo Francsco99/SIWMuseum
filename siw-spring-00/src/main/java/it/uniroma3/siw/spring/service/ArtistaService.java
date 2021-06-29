@@ -36,7 +36,7 @@ public class ArtistaService {
 	
 	@Transactional
 	public List<Artista> artistiPerNomeOCognome(String nome, String cognome){
-		return artistaRepository.findByNomeOrCognome(nome, cognome);
+		return artistaRepository.findByNomeOrCognome(nome,cognome);
 	}
 	
 	@Transactional
@@ -76,4 +76,16 @@ public class ArtistaService {
 	public List<Artista> artistaPerOpera(Opera opera) {
 		return this.artistaRepository.findByOpere(opera);
 	}
+	
+	@Transactional
+	public List<Artista> artistaNomeOCognome(String nome){
+		return this.artistaRepository.findByNomeOrCognomeIsLike(nome);
+	}
+	
+	
+	@Transactional
+	public void update(Artista artista, Long id) {
+		this.artistaRepository.saveOrUpdate(artista.getNome(), artista.getCognome(), artista.getBiografia(),id);
+	}
 }
+
