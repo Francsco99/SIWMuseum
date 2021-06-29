@@ -17,7 +17,7 @@ import it.uniroma3.siw.spring.validator.CollezioneValidator;
 
 @Controller
 public class CollezioneController {
-
+	
 	@Autowired
 	private CollezioneService collezioneService;
 	
@@ -63,6 +63,9 @@ public class CollezioneController {
 			Model model, BindingResult bindingResult) {
 		this.collezioneValidator.validate(collezione, bindingResult);
 		if (!bindingResult.hasErrors()) {
+			/*PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca*/
+			collezione.setNome(collezione.getNome().toLowerCase());
+			
 			this.collezioneService.inserisci(collezione);
 			model.addAttribute("collezioni", this.collezioneService.tutti());
 			return "collezioni.html";
@@ -75,6 +78,7 @@ public class CollezioneController {
 		logger.debug(id.toString());
 		this.collezioneService.cancella(id);
 		logger.debug("CANCELLATA COLLEZIONE CON ID: "+id.toString());
+		
 		model.addAttribute("collezioni", this.collezioneService.tutti());
 		return "collezioni.html";
 	}

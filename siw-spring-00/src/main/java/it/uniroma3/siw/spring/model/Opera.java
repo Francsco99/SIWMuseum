@@ -21,6 +21,7 @@ public class Opera {
 	@Lob
 	private String descrizione;
 	
+	@Lob
 	private String immagine;
 	
 	@ManyToOne

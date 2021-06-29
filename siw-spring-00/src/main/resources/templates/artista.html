@@ -8,9 +8,13 @@
 <nav th:replace="fragments/base.html :: barraLoggato"></nav>
 
 <body th:if="${artista}" th:object="${artista}">
-	<header th:text="|*{nome} *{cognome}|"></header>
+	
+<header class="capitalize" th:text="|*{nome} *{cognome}|"></header>
+	
+
 </body>
 
+<div style="margin:50px">
 <section id="flex-container-1">
 	<div class="flex-item" th:if="${artista}" th:object="${artista}">
 		<div>
@@ -23,18 +27,18 @@
 		</div> 
 		<div>
 			<span class="descrittori">Luogo di nascita: </span>
-			<span th:text="*{luogoNascita}"></span>
+			<span class="capitalize" th:text="*{luogoNascita}"></span>
 		</div> 
 		<div>
-			<span class="descrittori">Luogo di morte: </span>
-			<span th:text="*{luogoMorte}"></span>
+			<span class="descrittori capitalize">Luogo di morte: </span>
+			<span class="capitalize" th:text="*{luogoMorte}"></span>
 		</div> 
 		<div>
-			<span class="descrittori">Nazionalità: </span>
-			<span th:text="*{nazionalita}"></span>
+			<span class="descrittori capitalize">Nazionalità: </span>
+			<span class="capitalize" th:text="*{nazionalita}"></span>
 		</div> 
 	</div>
-	<a class="flex-item-1" th:href="${artista.immagine}">
+	<a class="flex-item-1">
 		<img th:src="${artista.immagine}"
 		th:alt="|${artista.nome} ${artista.cognome}|"
 		height="300">
@@ -42,23 +46,32 @@
 </section>
 
 <section id="biografia">
-	<h2>Biografia:</h2>
+	<h2 style="color: #4d4d4d">Biografia:</h2>
 	<div th:if="${artista}" th:object="${artista}" class="biografia" th:text="*{biografia}"></div>
 </section>
-
-<h2>Opere:</h2>
-
-<div class="flex-container-2">
-	<ul>
-		<li th:each="opera : ${opere}">
-			<div>
-				<a th:href="@{'/opera' + '/' + ${opera.id}}">
-					<img class="immagine" th:src="${opera.immagine}">
-				</a>
-			</div>
-		</li>
-	</ul>
 </div>
+
+<h2 style="text-align: center; color: #4d4d4d">Opere:</h2>
+
+<div class="container">
+		<div class="gallery" th:each="opera : ${opere}">
+			<a th:href="@{'/opera' + '/' + ${opera.id}}">
+				<img th:src="${opera.immagine}">
+			</a>
+			<div style="text-align:center;">
+				<span class="desc" th:text="${opera.titolo}"></span>
+				
+				<div style="margin: 5px">
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a class="flex-item-1" th:href="@{'/admin/modificaOpera'+'/' +${opera.id}}">Modifica opera</a>
+				</span>
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a class="flex-item-1" th:href="@{'/admin/cancellaOpera'+'/' +${opera.id}}">Cancella opera</a>
+				</span>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <footer th:replace="fragments/base.html :: fondo"></footer>
 </html>

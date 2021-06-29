@@ -26,7 +26,7 @@ public class Collezione {
 	@ManyToOne
 	private Curatore curatore;
 	
-	@OneToMany(mappedBy = "collezione")
+	@OneToMany(mappedBy = "collezione", cascade = CascadeType.REFRESH)
 	private List<Opera> opereInCollezione;
 	
 	public Collezione() {
