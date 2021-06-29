@@ -8,7 +8,7 @@
 <nav th:replace="fragments/base.html :: barraLoggato"></nav>
 
 <body th:if="${collezione}" th:object="${collezione}">
-	<header th:text="*{nome}"></header>
+	<header class="capitalize" th:text="*{nome}"></header>
 </body>
 
 <section class="image">
@@ -30,7 +30,7 @@
 	<h2>
 		Curatore:
 	</h2>
-	<a th:href="@{'/curatore' + '/' + ${collezione.curatore.id}}" 
+	<a th:href="@{'/curatore' + '/' + ${collezione.curatore.id}}" class="capitalize"
 	th:text="|${collezione.curatore.nome} ${collezione.curatore.cognome}|">
 
 </a>

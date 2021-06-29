@@ -98,10 +98,10 @@ public class ArtistaController {
 			artistaTemp.setNome(artistaTemp.getNome().toLowerCase());					
 			artistaTemp.setCognome(artistaTemp.getCognome().toLowerCase());				 
 			artistaTemp.setLuogoNascita(artistaTemp.getLuogoNascita().toLowerCase());   
-			artistaTemp.setLuogoNascita(artistaTemp.getLuogoMorte().toLowerCase());
-
+			artistaTemp.setLuogoMorte(artistaTemp.getLuogoMorte().toLowerCase());
 			logger.debug("CONFERMO e SALVO dati artista");
 			logger.debug("DATA NASCITA: "+ artistaTemp.getDataNascita());
+			
 			this.artistaService.inserisci(artistaTemp);
 			model.addAttribute("artisti", this.artistaService.tutti());
 			return "artisti.html";

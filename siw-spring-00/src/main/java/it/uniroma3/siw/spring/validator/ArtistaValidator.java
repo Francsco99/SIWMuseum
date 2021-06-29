@@ -33,11 +33,12 @@ public class ArtistaValidator implements Validator {
 		Artista a = (Artista)target;
 
 		/*Data di nascita non puo essere dopo data di morte*/
-		if(a.getDataNascita().isAfter(a.getDataMorte())) {
-			logger.debug("non può essere nato dopo essere morto");
-			errors.reject("assurdoNascita");
+		if(a.getDataMorte()!=null) {
+			if(a.getDataNascita().isAfter(a.getDataMorte())) {
+				logger.debug("non può essere nato dopo essere morto");
+				errors.reject("assurdoNascita");
+			}
 		}
-
 		if(!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
 			if(this.artistaService.alreadyExists((Artista)target)){

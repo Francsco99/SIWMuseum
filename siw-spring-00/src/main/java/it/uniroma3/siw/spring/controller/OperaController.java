@@ -93,6 +93,7 @@ public class OperaController {
 		if (!bindingResult.hasErrors()) {  
 			/*PER INSERIRE IL TITOLO MINUSCOLO NEL DB, al fine di facilitarne la ricerca*/
 			opera.setTitolo(opera.getTitolo().toLowerCase()); 
+			
 			logger.debug("passo alla conferma");
 			operaTemp = opera;
 			return "confermaOperaForm.html";

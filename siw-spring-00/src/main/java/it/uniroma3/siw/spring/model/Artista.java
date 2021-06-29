@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,10 +32,12 @@ public class Artista {
 	private LocalDate dataNascita;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(nullable = true)
 	private LocalDate dataMorte;
 
 	private String luogoNascita;
 	
+	@Column(nullable = true)
 	private String luogoMorte;
 	
 	private String nazionalita;

@@ -9,7 +9,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
 	<link th:href="@{/css/base.css}" rel="stylesheet">
 	<title>Museo Villa Bonelli</title>
-
 </head>
 
 <nav th:fragment="barra">
@@ -23,7 +22,7 @@
 	<a th:href="@{/register}">Registrati</a>
 
 	<form th:action="@{/ricerca}" method="GET">
-		<span>Cerca nel museo</span>
+		<span> <b> Cerca nel museo </b> </span>
 		<span><input type="text" name="cerca" required /></span>
 		<span><button type="submit">Cerca</button></span>
 	</form>
@@ -55,7 +54,7 @@
 
 
 	<form th:action="@{/ricerca}" method="GET">
-		<span>Cerca nel museo</span>
+		<span> <b> Cerca nel museo </b> </span>
 		<span><input type="text" name="cerca" required /></span>
 		<span><button type="submit">Cerca</button></span>
 	</form>

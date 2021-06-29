@@ -26,15 +26,16 @@
 	<div th:text="${opera.descrizione}"></div>
 </section>
 
-<section class="description">
+<section class="description" th:if="${opera.autore != null}">
 	<h2>
 		Autore:
 	</h2>
 	<a th:href="@{'/artista' + '/' + ${opera.autore.id}}" 
 	th:text="|${opera.autore.nome} ${opera.autore.cognome}|">
-
 </a>
 </section>
+
+<section th:unless="${opera.autore != null}">Aggiungi autore</section>
 
 <section class="description">
 	<h2>Collezione</h2>
