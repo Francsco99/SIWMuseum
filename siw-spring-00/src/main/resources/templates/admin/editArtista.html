@@ -10,13 +10,19 @@
     <h4>Inserisci i dati di un artista</h4>
   </div>
 
-  <form th:action="@{'/modificaArtista'+'/'+${artista.id}}" method="POST" th:object="${artista}"> 
+  <form th:action="@{'/admin' + '/' + 'modificaArtista' + '/' + ${artista.id}}" method="POST" th:object="${artista}"> 
 
     <div>
       <div>
         <span>Nome:</span>
         <span><input th:value="*{nome}" type="text" th:field="*{nome}" /></span>
         <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+      </div> 
+
+       <div>
+        <span>Cognome:</span>
+        <span><input th:value="*{cognome}" type="text" th:field="*{cognome}" /></span>
+        <span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
       </div> 
 
       <div>

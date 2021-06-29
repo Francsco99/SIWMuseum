@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.spring.model.Artista;
-import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.spring.service.OperaService;
 import it.uniroma3.siw.spring.validator.ArtistaValidator;
@@ -69,7 +68,7 @@ public class ArtistaController {
 		logger.debug("PASSO ALLA FORM addArtista");
 		model.addAttribute("artista", new Artista());
 		model.addAttribute("dataOggi", dataOggi);
-		return "artistaForm.html";
+		return "/admin/artistaForm.html";
 	}
 
 
@@ -81,9 +80,9 @@ public class ArtistaController {
 		if (!bindingResult.hasErrors()) {
 			logger.debug("PASSO alla conferma");
 			artistaTemp = artista;
-			return "confermaArtistaForm.html";
+			return "/admin/confermaArtistaForm.html";
 		}
-		return "artistaForm.html";
+		return "/admin/artistaForm.html";
 	} 
 
 	/*conferma l'inserimento dei dati nel db*/
@@ -107,18 +106,18 @@ public class ArtistaController {
 			return "artisti.html";
 		}
 		else {
-			return "artistaForm.html";
+			return "/admin/artistaForm.html";
 		}
 	}
 
-	@RequestMapping(value="/modificaArtista/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/admin/modificaArtista/{id}", method = RequestMethod.GET)
 	public String editArtista(Model model, @PathVariable("id")Long id) {
 		Artista artista = this.artistaService.artistaPerId(id);
 		model.addAttribute("artista", artista);
-		return "editArtista.html";
+		return "/admin/editArtista.html";
 	}
 
-	@RequestMapping(value="/modificaArtista/{id}",method = RequestMethod.POST)
+	@RequestMapping(value="/admin/modificaArtista/{id}",method = RequestMethod.POST)
 	public String confermaModifica(@PathVariable("id") Long id,@Validated @ModelAttribute("artista") Artista artista,
 			Model model) {
 		artistaService.update(artista, id);

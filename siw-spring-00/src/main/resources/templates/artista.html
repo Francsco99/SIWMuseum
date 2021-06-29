@@ -21,68 +21,67 @@
 				<span class="descrittori">Data di nascita: </span>
 				<span th:text="*{dataNascita}"></span>
 			</div> 
-			<div th:if="${artista.dataMorte !=null}">
+			<div>
 				<span class="descrittori">Data di morte: </span>
 				<span th:text="*{dataMorte}"></span>
-			</div>
-
+			</div> 
 			<div>
 				<span class="descrittori">Luogo di nascita: </span>
 				<span class="capitalize" th:text="*{luogoNascita}"></span>
 			</div> 
-			
-			<div th:if="${artista.luogoMorte !=null}">
+			<div>
 				<span class="descrittori capitalize">Luogo di morte: </span>
 				<span class="capitalize" th:text="*{luogoMorte}"></span>
-			</div>
-			<div>
-				<span class="descrittori capitalize">Nazionalità: </span>
-				<span class="capitalize" th:text="*{nazionalita}"></span>
-				<div sec:authorize="hasAuthority('ADMIN')">
-					<form th:href="@{'/modificaArtista' + '/' + ${artista.id} }"
-					th:action="@{'/modificaArtista' + '/' + ${artista.id} }"
-					th:method="GET">
-					<button type="submit">Modifica Artista</button>
-				</form>
 			</div> 
-		</div>
-		<a class="flex-item-1">
-			<img th:src="${artista.immagine}"
-			th:alt="|${artista.nome} ${artista.cognome}|"
-			height="300">
+			<div>
+				<span class="descrittori capitalize">Nazionalita':</span>
+				<span class="capitalize" th:text="*{nazionalita}"></span>
+			</div> 
+
+			<div sec:authorize="hasAuthority('ADMIN')">
+				<form th:href="@{'/admin' + '/' + 'modificaArtista' + '/' + ${artista.id}}"
+				th:action="@{'/admin' + '/' + 'modificaArtista' + '/' + ${artista.id}}"
+				th:method="GET">
+				<button type="submit">Modifica Artista
+				</button>
+			</form>
+		</div> 
+
+	</div>
+	<a class="flex-item-1">
+		<img th:src="${artista.immagine}"
+		th:alt="|${artista.nome} ${artista.cognome}|"
+		height="300">
+	</a>
+</section>
+
+<section id="biografia">
+	<h2 style="color: #4d4d4d">Biografia:</h2>
+	<div th:if="${artista}" th:object="${artista}" class="biografia" th:text="*{biografia}"></div>
+</section>
+</div>
+
+<h2 style="text-align: center; color: #4d4d4d">Opere:</h2>
+
+<div class="container">
+	<div class="gallery" th:each="opera : ${opere}">
+		<a th:href="@{'/opera' + '/' + ${opera.id}}">
+			<img th:src="${opera.immagine}">
 		</a>
-	</section>
+		<div style="text-align:center;">
+			<span class="desc" th:text="${opera.titolo}"></span>
 
-	<section id="biografia">
-		<h2 style="color: #4d4d4d">Biografia:</h2>
-		<div th:if="${artista}" th:object="${artista}" class="biografia" th:text="*{biografia}"></div>
-	</section>
-
-	<h2 style="text-align: center; color: #4d4d4d">Opere:</h2>
-
-	<div class="container">
-		<div class="gallery" th:each="opera : ${opere}">
-			<a th:href="@{'/opera' + '/' + ${opera.id}}">
-				<img th:src="${opera.immagine}">
-			</a>
-			<div style="text-align:center;">
-				<span class="desc" th:text="${opera.titolo}"></span>
-				
-				<div style="margin: 5px">
-					<span sec:authorize="hasAuthority('ADMIN')">
-						<a class="flex-item-1" th:href="@{'/admin/modificaOpera'+'/' +${opera.id}}">Modifica opera</a>
-					</span>
-					<span sec:authorize="hasAuthority('ADMIN')">
-						<a class="flex-item-1" th:href="@{'/admin/cancellaOpera'+'/' +${opera.id}}">Cancella opera</a>
-					</span>
-				</div>
+			<div style="margin: 5px">
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a class="flex-item-1" th:href="@{'/admin/modificaOpera'+'/' +${opera.id}}">Modifica opera</a>
+				</span>
+				<span sec:authorize="hasAuthority('ADMIN')">
+					<a class="flex-item-1" th:href="@{'/admin/cancellaOpera'+'/' +${opera.id}}">Cancella opera</a>
+				</span>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<footer th:replace="fragments/base.html :: fondo"></footer>
-
-</body>
+<footer th:replace="fragments/base.html :: fondo"></footer>
 </html>
-
-
